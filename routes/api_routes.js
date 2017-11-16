@@ -20,7 +20,30 @@ module.exports = function(app) {
         not: "This is thunderous!",
         here: 2
       })
+  });
 
+  app.get("api/all_tests", function(req, res) {
+    //get user id
+    //sequelize query
+    db.Test.findAll({
+      where: {
+        id: //user id
+      }
+    }).then(function(dbTest) {
+      res.json(dbTest);
+    });
+  });
+
+  app.get("api/all_questions_and_answers", function(req, res) {
+    //get test id
+    //sequelize query
+    db.Question.find({
+      where: {
+        id: //test id
+      }
+    }).then(function(dbQuestion) {
+      res.json(dbQuestion);
+    })
   });
 
   // Add a new test
@@ -28,10 +51,7 @@ module.exports = function(app) {
     //get username -> current_user saved on either local_storage or session_storage
     //get req.body.test_name
     //send sequelize database the test_name 
-
     //return Test object
-    console.log("Someone has called upon the API Test Name creation path!");
-    res.send("0K We g0t th15 far!");
   });
 
   // Add a question to test
@@ -44,8 +64,44 @@ module.exports = function(app) {
     console.log("Someone has called upon the API New_Question_and_Answers creation path!");
   });
 
-  app.put("/api/update_question" , function(req , res){
-
+  app.put("/api/update_question_and_answers", function(req , res){
+    //get req.body.question_phrase
+    //get req.body.answer_true
+    //for (all other false answers that exist)
+    //  get req.body.answer_false_i
+    //update
   });
 
+  app.put("/api/update_test", function(req , res){
+    //get req.body.test_name
+    //update
+  });
+
+  app.post("/api/new_user", function(req, res) {
+    //get req.body.email
+    //get req.body.password
+    //get req.body.name
+    //send
+  });
+
+  app.put("/api/update_user", function(req, res) {
+    //get req.body.email
+    //get req.body.password
+    //get req.body.name
+    //update
+  });
+
+  app.put("api/delete_test/:id", function(req, res) {
+    //get id
+    //update deleted
+  });
+
+  app.put("/api/delete_question/:id", function(req , res){
+    //get id
+    //update deleted
+  });
+  app.put("/api/delete_user/:id", function(req , res){
+    //get id
+    //update deleted
+  });
 }; 
