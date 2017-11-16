@@ -31,6 +31,7 @@ module.exports = function(app) {
 
     //return Test object
     console.log("Someone has called upon the API Test Name creation path!");
+    res.send("0K We g0t th15 far!");
   });
 
   // Add a question to test
