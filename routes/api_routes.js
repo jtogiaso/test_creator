@@ -43,14 +43,18 @@ module.exports = function(app) {
       }
     }).then(function(dbQuestion) {
       res.json(dbQuestion);
-    })
+    });
+    //TODO: Manage Answer sequelize query
   });
 
   // Add a new test
   app.post("/api/new_test_name", function(req , res) {
     //get username -> current_user saved on either local_storage or session_storage
     //get req.body.test_name
-    //send sequelize database the test_name 
+    //send sequelize database the test_name
+    db.Test.create(req.body).then(function(dbTest) {
+      res.json(dbTest);
+    });
     //return Test object
   });
 
@@ -61,7 +65,10 @@ module.exports = function(app) {
     //for (all other false answers that exist)
     //  get req.body.answer_false_i
     //send
-    console.log("Someone has called upon the API New_Question_and_Answers creation path!");
+    db.Question.create(req.body).then(function(dbQuestion) {
+      res.json(dbQuestion);
+    });
+    //TODO: Manage Answer sequelize query
   });
 
   app.put("/api/update_question_and_answers", function(req , res){
@@ -70,11 +77,32 @@ module.exports = function(app) {
     //for (all other false answers that exist)
     //  get req.body.answer_false_i
     //update
+    db.Question.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    }).then(function(dbQuestion) {
+      res.json(dbQuestion);
+    });
+    //TODO: Manage Answer sequelize query
   });
 
   app.put("/api/update_test", function(req , res){
     //get req.body.test_name
     //update
+    db.Test.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    }).then(function(dbTest) {
+      res.json(dbTest);
+    });
   });
 
   app.post("/api/new_user", function(req, res) {
@@ -82,6 +110,9 @@ module.exports = function(app) {
     //get req.body.password
     //get req.body.name
     //send
+    db.User.create(req.body).then(function(dbUser) {
+      res.json(dbUser);
+    });
   });
 
   app.put("/api/update_user", function(req, res) {
@@ -89,19 +120,66 @@ module.exports = function(app) {
     //get req.body.password
     //get req.body.name
     //update
+    db.User.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
   });
 
   app.put("api/delete_test/:id", function(req, res) {
     //get id
     //update deleted
+    db.Test.update(
+      {
+        deleted: true;
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    }).then(function(dbTest) {
+      res.json(dbTest);
+    });
   });
 
   app.put("/api/delete_question/:id", function(req , res){
     //get id
     //update deleted
+    db.Question.update(
+      {
+        deleted: true;
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    }).then(function(dbQuestion) {
+      res.json(dbQuestion);
+    });
+    //TODO: Manage Answer Sequelize query IF AND ONLY IF answers need to be soft deleted with its question
   });
   app.put("/api/delete_user/:id", function(req , res){
     //get id
     //update deleted
+    db.User.update(
+      {
+        deleted: true;
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
   });
 }; 
