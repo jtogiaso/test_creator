@@ -10,15 +10,20 @@ module.exports = function(sequelize, DataTypes) {
     correct_answer: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
-    },
-    question_origin: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-       model: question,
-       key: 'id'
-      }
     }
   });
+  Answer.associate = function(models) {
+    Post.belongsTo(models.question, {
+      foreignKey: {
+        type: DataTypes.INTEGER,
+        name: question_id
+        allowNull: false
+      }
+    });
+  };
+
   return Answer;
 };
+
+
+
