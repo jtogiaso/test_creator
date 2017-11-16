@@ -4,12 +4,24 @@
 
 // Dependencies
 // =============================================================
-const connection = require("../config/connection.js");
-const api_controller = require("../../controllers/api_controller.js");
+const db = require("../models");
+// const api_controller = require("../../controllers/api_controller.js");
 
 // Routes
 // =============================================================
 module.exports = function(app) {
+
+  app.get("/api/new_test_name", function(req , res) {
+
+    console.log("Someone has called upon the API!");
+    res.json({
+        you: true ,
+        are: false,
+        not: "This is thunderous!",
+        here: 2
+      })
+
+  });
 
   // Add a new test
   app.post("/api/new_test_name", function(req , res) {
