@@ -11,10 +11,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     test_creator: {
-      type: DataTypes.INTERGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      
-    }
+      references: {
+       model: user,
+       key: 'id'
+      }
+    },
+
   });
   return Test;
 };
