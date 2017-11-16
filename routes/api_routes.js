@@ -11,17 +11,7 @@ const db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-  app.get("/api/new_test_name", function(req , res) {
-
-    console.log("Someone has called upon the API!");
-    res.json({
-        you: true ,
-        are: false,
-        not: "This is thunderous!",
-        here: 2
-      })
-
-  });
+  app.get("/api/new_test_name", api_controller.make_new_test);
 
   // Add a new test
   app.post("/api/new_test_name", function(req , res) {
