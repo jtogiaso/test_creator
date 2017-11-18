@@ -9,16 +9,20 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1, 140]
       }
-    },
-    test_creator: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-       model: user,
-       key: 'id'
-      }
-    },
-
+    }
   });
+    
+  Test.associate = function(models) {
+    Test.belongsTo(models.User, {
+      foreignKey: {
+       allowNull: false
+      }
+    });
+    Test.hasMany(models.Question, 
+      {
+        onDelete: "cascade"
+      }
+    );
+  };
   return Test;
 };

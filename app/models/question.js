@@ -6,15 +6,20 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1, 140]
       }
-    },
-    test_origin: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-       model: Test,
-       key: 'id'
-      }
     }
   });
+
+  Question.associate = function(models) {
+    Question.belongsTo(models.Test, {
+      foreignKey: {
+       allowNull: false
+      }
+    });
+    Question.hasMany(models.Answer, 
+      {
+        onDelete: "cascade"
+      }
+    );
+  };
   return Question;
 };

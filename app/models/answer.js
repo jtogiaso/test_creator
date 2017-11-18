@@ -11,13 +11,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }
-  });
+  });  
   Answer.associate = function(models) {
-    Post.belongsTo(models.question, {
+    Answer.belongsTo(models.Question, {
       foreignKey: {
-        type: DataTypes.INTEGER,
-        name: question_id
-        allowNull: false
+       allowNull: false
       }
     });
   };

@@ -4,5 +4,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     }
   });
+
+  Role.associate = function(models) {
+    Role.hasMany(models.User, {
+        onDelete: "cascade"
+    });
+  };
+
   return Role;
 };
