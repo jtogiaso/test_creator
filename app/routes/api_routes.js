@@ -38,33 +38,33 @@ module.exports = function(app) {
   });
 
   //Ajax call route
-  db.Question.findAll(
-    {
-      where: {
-        TestId: req.body.TestId
-      }
-    }
-  )
-  .then(function(dbQuestions){
-    let testOBJ = {}
-    for (let i in dbQuestions){
-      testObj[i].question=dbQuestions[i].question_phrase;
-      db.Anwers.findAll(
-        {
-          where: {
-            QuestionId: dbQuestions.question_id
-          }
-        }
-      )
-      .then(function(dbAnswers){
-        for (let j in dbAnswers)
-          testOBJ[i].answer[j]=dbAnswers.answer_phrase;
-      })
-    }
-  })
+  // db.Question.findAll(
+  //   {
+  //     where: {
+  //       TestId: req.body.TestId
+  //     }
+  //   }
+  // )
+  // .then(function(dbQuestions){
+  //   let testOBJ = {}
+  //   for (let i in dbQuestions){
+  //     testObj[i].question=dbQuestions[i].question_phrase;
+  //     db.Anwers.findAll(
+  //       {
+  //         where: {
+  //           QuestionId: dbQuestions.question_id
+  //         }
+  //       }
+  //     )
+  //     .then(function(dbAnswers){
+  //       for (let j in dbAnswers)
+  //         testOBJ[i].answer[j]=dbAnswers.answer_phrase;
+  //     })
+  //   }
+  // })
 
-  // app.get("api/all_questions_and_answers", function(req, res) {
-  //   //get test id
+  // // app.get("api/all_questions_and_answers", function(req, res) {
+  // //   //get test id
   //   //sequelize query
 
   //   db.Question.find({
