@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+    <title>create a test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!--custom css-->
+     <link rel="stylesheet" href="assets/css/custom.css" type="text/css"> 
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Quizomatic</h1>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col-4">
+                  <form class="createTest">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Enter a name for your test">
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                      <button class="btn btn-primary" type="button" id="btn-createTest">submit</button>
+                    </div>
+                  </form>
+
+                </div>
+                <!-- column -->
+                <div class="col-8">
+                  <h2></h2>
+                  <form class="createQuestion">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="questionStem" placeholder="Enter quesition stem here.">
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="answer" placeholder="Enter answer here.">
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="firstDistractor" placeholder="Enter first distractor here.">
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="secondDistractor" placeholder="Enter second distractor here.">
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="thirdDistractor" placeholder="Enter third question.">
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary">submit question</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- column -->
+            </div>
+            <!-- row -->
+        </main>
+        <footer>
+            <p class="text-center">&copy; 2017 Quizomatic</p>
+        </footer>
+    </div>
+    <!-- ontainer -->
+    <!--Front End Javascript-->
+    <script type="application/javascript" src="assets/js/frontend.js"></script>
+</body>
+
+</html>
