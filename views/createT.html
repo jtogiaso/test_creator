@@ -1,0 +1,17 @@
+<h1>{{ title }}</h1>
+<p>Tests for {{ username }}.</p>
+
+<div class="container">
+	<h1>{{ title }}</h1>
+
+	<div class="row">
+		<div class="col-12">
+			<h2>Your Tests</h2>
+			<ul>
+				{{ #each testArray }}
+				<li><a href="#">{{ this }}</a></li>
+				{{ /each }}
+			</ul>
+		</div><!-- column -->
+	</div><!-- row -->
+</div>

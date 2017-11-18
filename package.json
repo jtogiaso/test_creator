@@ -1,0 +1,30 @@
+{
+  "name": "test_creator_dm",
+  "version": "1.0.0",
+  "description": "Test for front end functionality only.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtogiaso/test_creator.git"
+  },
+  "keywords": [
+    "test",
+    "front_end_only"
+  ],
+  "author": "dan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "path": "*",
+    "body-parser": "*",
+    "express-handlebars": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/jtogiaso/test_creator/issues"
+  },
+  "homepage": "https://github.com/jtogiaso/test_creator#readme"
+}
