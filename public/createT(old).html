@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
+	<meta charset="UTF-8">
+	<title>create a test</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<!--custom css-->
+<link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+<!--jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="page"> 
+  
+  <!--***********************************************************************************************
+
+HEADER includes 
+    -logo
+    -sign up / log in, which links to profile after log in
+    
+-->
+  
+  <header>
+    <section class="header-content container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="team-name">quizomatic</h1>
+          <input class="float-right btn btn-link" id="open-user-forms" type="button" value="log in / sign up">
+        </div>
+        <!--col--> 
+      </div>
+      <!--row--> 
+      
+    </section>
+    
+    <!-- user sign up and log in -->
+    
+    <section class="container-fluid user-forms" id="user-forms">
+      <form class="container user-form">
+        <header class="row">
+          <div class="col-12"> <img class="form-logo" src="assets/images/brainTester.png" alt="Logo">
+            <button type="button" id="close-user-forms" class="btn float-right">&times;</button>
+          </div>
+          <!--col--> 
+        </header>
+        <!--row-->
+        <div class="row"> 
+          <!--sign up-->
+          <fieldset class="col-12 col-sm-6">
+            <legend>sign up <small class="text-muted">(if <u>not</u> a member)</small></legend>
+            <div class="form-group">
+              <label for="name" class="form-control-label">name</label>
+              <input id="name" type="text" class="form-control" placeholder="your name">
+              <label for="new-un" class="form-control-label">username</label>
+              <input id="new-un" type="text" class="form-control" placeholder="choose a username between 8 and 16 characters">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary" type="reset">reset</button>
+              <button id="signup" class="btn btn-primary btn-user-access" type="submit">sign up</button>
+            </div>
+          </fieldset>
+
+        </div>
+        <!--row-->
+      </form>
+      <!--container--> 
+      
+    </section>
+    <!--container fluid--> 
+    
+  </header>
+
+    <!--***********************************************************************************************
+
+MAIN includes 
+
+-->
+  
+  <main>
+    <section class="main-content container">
+      <section class="jumbotron" id="profile">
+        <div class="row">
+          <div class="col-12 col-md-6" id="main-logo"> <img class="img-fluid main-logo-img" src="assets/images/brainTester.png" alt="logo"> </div>
+          <!--col-->
+          
+          <div class="col-12 col-md-6" id="intro">
+                       
+          <p class="intro mt-5"><span class="lead">Create a test.</span> In the field below provide a name for the test you would like to create.</p>
+
+          <form>
+            <fieldset>
+              <div class="form-group">
+              <label for="test_name" class="form-control-label">test name</label>
+              <input id="un" type="text" class="form-control" placeholder="add a test name">
+            </div>
+            </fieldset>
+          </form>
+            
+            
+            
+          </div>
+        </div>
+        <!--row-->
+       
+      
+        
+
+          
+        </section>
+        <!--container--> 
+        
+      </section>
+      <!--jumbotron--> 
+      
+    </section>
+    <!--main content container-->
+    
+
+    
+  </main>
+</div>
+<footer>
+  <section class="footer-content container">
+    <p class="text-center text-muted"><small>&copy; 2017 Quizomatic</small></p>
+  </section>
+  <!--footer content container--> 
+</footer>
+
+
+<!--Front End Javascript--> 
+<script type="application/javascript" src="assets/js/frontend.js"></script>
+
+	
+</body>
+</html>
