@@ -54,11 +54,14 @@ app.get('/', function(req, res) {
     res.send('Welcome to Passport with Sequelize');
  
 });
-// require("./routes/api_routes.js")(app);
-let authRoute = require('./app/routes/auth.js')(app,passport);
+require("./app/routes/api_routes.js")(app);
+// let authRoute = 
+require('./app/routes/auth.js')(app,passport);
 
  //load passport strategies
 require('./app/config/passport/passport.js')(passport, db.User);
+
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
