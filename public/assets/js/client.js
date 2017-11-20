@@ -1,10 +1,41 @@
-console.log("Client.js is loaded.");
 //////////////////////////////////////////////
-// Log in functions
-//TO DO validation
+// Global Variables
 
 var currentUser;
+var currentTest;
 
+//////////////////////////////////////////////
+// Sign up 
+//TODO adjust index.html to match these properties.
+
+
+$("#signup").on("submit", function (event) {
+	event.preventDefault();
+	var newUser = {
+		firstname: $("[name='firstname']").val().trim(),
+		lastname: $("[name='lastname']").val().trim(),
+		email: $("[name='email']").val().trim(),
+		username: $("[name='username']"),
+		password: $("[name='password']").val().trim()
+	};
+
+	// Send the POST request.
+	$.ajax("/signup", {
+		type: "POST",
+		data: newUser
+	}).then(
+		function() {
+			console.log("New user created.");
+		}
+	);
+});
+
+//////////////////////////////////////////////
+// Log in functions
+//TODO adjust index.html to match these properties.
+
+
+// set user to 
 var setUser = function() {
 	currentUser = $("input[name='user_name']").val().trim();
 	sessionStorage.setItem("username", currentUser);
@@ -12,265 +43,125 @@ var setUser = function() {
 
 var getUser = function() {
 	currentUser = sessionStorage.getItem("username");
-	if(currentUser) {
+	if (currentUser) {
 		$("#user-label").text(currentUser);
 	} else {
 		$("#user-label").text("ERROR, missing username");
 	}
 };
 
-$("#login").on("click", function(event) {
+$("#signin").on("submit", function(event) {
 	event.preventDefault();
-	
-	setUser();
-	
+	var newLogin = {
+		username: $("[name='username']").val().trim(),
+		password: $("[name='password']").val().trim()
+	};
+
+	// Send the GET request.
+	$.ajax("/signin", {
+		type: "GET",
+		data: newLogin
+	}).then(
+		function() {
+			console.log("User logged in.");
+		}
+	);
 });
 
+//////////////////////////////////////////////
+// TEST CREATE
 
-
-
-$(document).ready(function() {
-	
+$(".createT-form").on("submit", function (event) {
+	event.preventDefault();
+	currentTest = $("#createT-input").val().trim();
 	getUser();
 
+	var newTest = {
+		username: currentUser,
+		test_name: currentTest
+	};
 
-});//end document ready
+	$.ajax("/api/new_test_name", {
+		type: "POST",
+		data: newTest
+	}).then(
+		function () {
+			console.log("created new test");
+		}
+	);
+});
 
+//////////////////////////////////////////////
+// TEST READ
+//TODO finish loadTest function
 
+var loadTests = function() {
+	
+	$.ajax("/api/all_tests", {
+		type: "GET",
+		data: currentUser
+	}).then(
+		function (testData) {
+			console.log("tests retrieved");
+		}
+	);	
+};
 
-
-
-
-/*
-
-
-$("").on("click", function(event) {
+//////////////////////////////////////////////
+// QUESTION CREATE
+$(".createT-form").on("submit", function (event) {
 	event.preventDefault();
+	var answer_falseArr = [];
+	currentTest = $("#createT-input").val().trim();
+	$("[name='answer'][value='false']").val().trim().push(answer_falseArr);
+	
+	var newQuestion = {
+		test_name: currentTest,
+		question_phrase: $("[name='stem']").val().trim(),
+		answer_true: $("[name='answer'][value='true']").val().trim(),
+		answer_false: answer_falseArr
+	};
+
+	$.ajax("/api/new_question_and_answers", {
+		type: "POST",
+		data: newQuestion
+	}).then(
+		function () {
+			console.log("created new question");
+		}
+	);
+
+// QUESTION READ
+
+	$.ajax("/api/all_question_and_answers/" + currentTest, {
+		type: "GET"
+	}).then(
+		function (questionData) {
+			console.log(questionData);
+			//TODO parse data and distribute via handlebars
+		}
+	);
 	
 });
 
 
 
-S
+//////////////////////////////////////////////
+// QUESTION UPDATE
 
-// Routes
-// =============================================================
-module.exports = function(app) {
 
-  app.get("/api/new_test_name", function(req , res) {
+//////////////////////////////////////////////
+// QUESTION DELETE
 
-    console.log("Someone has called upon the API!");
-    res.json({
-        you: true ,
-        are: false,
-        not: "This is thunderous!",
-        here: 2
-      })
-  });
 
-  app.get("/api/all_tests", function(req, res) {
-    //get user id
-    //sequelize query
-    console.log(req.user);
-    db.Test.findAll({
-      where: {
-        UserId: req.user.id
-      }
-    })
-    .then(function(dbTest) {
-      console.log(dbTest);
-      res.json(dbTest);
-    });
-  });
 
-  //Ajax call route
-  // db.Question.findAll(
-  //   {
-  //     where: {
-  //       TestId: req.body.TestId
-  //     }
-  //   }
-  // )
-  // .then(function(dbQuestions){
-  //   let testOBJ = {}
-  //   for (let i in dbQuestions){
-  //     testObj[i].question=dbQuestions[i].question_phrase;
-  //     db.Anwers.findAll(
-  //       {
-  //         where: {
-  //           QuestionId: dbQuestions.question_id
-  //         }
-  //       }
-  //     )
-  //     .then(function(dbAnswers){
-  //       for (let j in dbAnswers)
-  //         testOBJ[i].answer[j]=dbAnswers.answer_phrase;
-  //     })
-  //   }
-  // })
+$(document).ready(function () {
 
-  // // app.get("api/all_questions_and_answers", function(req, res) {
-  // //   //get test id
-  //   //sequelize query
+	//getUser();
 
-  //   db.Question.find({
-  //     where: {
-  //       id: //test id
-  //     }
-  //   }).then(function(dbQuestion) {
-  //     res.json(dbQuestion);
-  //   });
-  //   //TODO: Manage Answer sequelize query
-  // });
 
-//   // Add a new test
-//   app.post("/api/new_test_name", function(req , res) {
-//     //get username -> current_user saved on either local_storage or session_storage
-//     //get req.body.test_name
-//     //send sequelize database the test_name
-//     db.Test.create(req.body).then(function(dbTest) {
-//       res.json(dbTest);
-//     });
-//     //return Test object
-//   });
+}); //end document ready
 
-//   // Add a question to test
-//   app.post("/api/new_question_and_answers", function(req, res) {
-//     //get req.body.question_phrase
-//     //get req.body.answer_true
-//     //for (all other false answers that exist)
-//     //  get req.body.answer_false_i
-//     //send
-//     db.Question.create(req.body).then(function(dbQuestion) {
-//       res.json(dbQuestion);
-//     });
-//     //TODO: Manage Answer sequelize query
-//   });
 
-//   app.put("/api/update_question_and_answers", function(req , res){
-//     //get req.body.question_phrase
-//     //get req.body.answer_true
-//     //for (all other false answers that exist)
-//     //  get req.body.answer_false_i
-//     //update
-//     db.Question.update(
-//       req.body,
-//       {
-//         where: {
-//           id: req.body.id
-//         }
-//       }
-//     }).then(function(dbQuestion) {
-//       res.json(dbQuestion);
-//     });
-//     //TODO: Manage Answer sequelize query
-//   });
 
-//   app.put("/api/update_test", function(req , res){
-//     //get req.body.test_name
-//     //update
-//     db.Test.update(
-//       req.body,
-//       {
-//         where: {
-//           id: req.body.id
-//         }
-//       }
-//     }).then(function(dbTest) {
-//       res.json(dbTest);
-//     });
-//   });
-
-//   app.post("/api/new_user", function(req, res) {
-//     //get req.body.email
-//     //get req.body.password
-//     //get req.body.name
-//     //send
-//     db.User.create(req.body).then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
-
-//   app.put("/api/update_user", function(req, res) {
-//     //get req.body.email
-//     //get req.body.password
-//     //get req.body.name
-//     //update
-//     db.User.update(
-//       req.body,
-//       {
-//         where: {
-//           id: req.body.id
-//         }
-//       }
-//     }).then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
-
-//   app.put("api/delete_test/:id", function(req, res) {
-//     //get id
-//     //update deleted
-//     db.Test.update(
-//       {
-//         deleted: true;
-//       },
-//       {
-//         where: {
-//           id: req.body.id
-//         }
-//       }
-//     }).then(function(dbTest) {
-//       res.json(dbTest);
-//     });
-//   });
-
-//   app.put("/api/delete_question/:id", function(req , res){
-//     //get id
-//     //update deleted
-//     db.Question.update(
-//       {
-//         deleted: true;
-//       },
-//       {
-//         where: {
-//           id: req.params.id
-//         }
-//       }
-//     }).then(function(dbQuestion) {
-//       res.json(dbQuestion);
-//     });
-//     //TODO: Manage Answer Sequelize query IF AND ONLY IF answers need to be soft deleted with its question
-//   });
-//   app.put("/api/delete_user/:id", function(req , res){
-//     //get id
-//     //update deleted
-//     db.User.update(
-//       {
-//         deleted: true;
-//       },
-//       {
-//         where: {
-//           id: req.params.id
-//         }
-//       }
-//     }).then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
-}; 
-© 2017 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
-
-*/
 
