@@ -1,70 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
-    <meta charset="UTF-8">
-    <title>create a test</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <!--custom css-->
-     <link rel="stylesheet" href="assets/css/custom.css" type="text/css"> 
-    <!--jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
+<meta charset="UTF-8">
+<title>create a test</title>
+<!--bootstrap version 3-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!--custom css-->
+<link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+<!--jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Quizomatic</h1>
-        </header>
-        <main>
-            <div class="row">
-                <div class="col-4">
-                  <form class="createTest">
-                    <div class="form-group">
-                      <input class="form-control" type="text" placeholder="Enter a name for your test">
-                    </div><!-- form-group -->
-                    <div class="form-group">
-                      <button class="btn btn-primary" type="button" id="btn-createTest">submit</button>
-                    </div>
-                  </form>
-
-                </div>
-                <!-- column -->
-                <div class="col-8">
-                  <h2></h2>
-                  <form class="createQuestion">
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="questionStem" placeholder="Enter quesition stem here.">
-                    </div><!-- form-group -->
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="answer" placeholder="Enter answer here.">
-                    </div><!-- form-group -->
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="firstDistractor" placeholder="Enter first distractor here.">
-                    </div><!-- form-group -->
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="secondDistractor" placeholder="Enter second distractor here.">
-                    </div><!-- form-group -->
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="thirdDistractor" placeholder="Enter third question.">
-                    </div><!-- form-group -->
-                    <div class="form-group">
-                      <button type="button" class="btn btn-primary">submit question</button>
-                    </div>
-                  </form>
-                </div>
-                <!-- column -->
-            </div>
-            <!-- row -->
-        </main>
-        <footer>
-            <p class="text-center">&copy; 2017 Quizomatic</p>
-        </footer>
+<div class="container">
+  <header>
+    <div class="page-header">
+      <h1><span class="label label-default">Quizomatic</span> <small>Username: {{hbs variable}}</small></h1>
     </div>
-    <!-- ontainer -->
-    <!--Front End Javascript-->
-    <script type="application/javascript" src="assets/js/frontend.js"></script>
+  </header>
+  <main>
+    <div class="row jumbotron" id="dashboard" aria-hidden="true">
+      <div class="col-md-4">
+        <section id="displayT" class="panel panel-default" aria-hidden="false">
+          <div class="panel-heading">Your tests</div>
+          <div class="panel-body">
+            <ul id="displayT-list">
+              <li><a href="#">view</a> {{hbs variable: test 1}}</li>
+              <li><a href="#">view</a> {{hbs variable: test 2}}</li>
+              <li><a href="#">view</a> {{hbs variable: test 3}}</li>
+            </ul>
+          </div>
+        </section>
+        <!--displayT--> 
+        
+      </div>
+      <!--column-->
+      <div class="col-md-8">
+        <section id="createT" aria-hidden="false">
+          <form id="createT-form">
+            <legend>Create a new test</legend>
+            <fieldset>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Type name for test here.">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Click to create test</button>
+                </span> </div>
+              <!-- /input-group -->
+              
+            </fieldset>
+          </form>
+        </section>
+        <!--createT--> 
+        
+      </div>
+      <!--column--> 
+    </div>
+    <!--row dashboard-->
+    
+    <div class="row">
+      <div class="col-md-6">
+        <section id="createQ" aria-hidden="false">
+          <form id="createQ-form" class="well">
+            <legend>Create a question</legend>
+            <div class="input-group input-group"> <span class="input-group-addon" id="stem-label">Question Stem</span>
+              <input type="text" id="stem" class="stem form-control" placeholder="Type question stem here." aria-describedby="stem-label">
+            </div>
+            <div class="input-group input-group"> <span class="input-group-addon" id="answer-label">Answer</span>
+              <input type="text" id="answer" class="answer form-control" placeholder="Type answer here." aria-describedby="answer-label">
+            </div>
+            <div class="input-group input-group"> <span class="input-group-addon" id="distractor-a-label">Distractor</span>
+              <input type="text" class="distractor form-control" placeholder="Type distractor stem here." aria-describedby="distractor-a-label">
+            </div>
+            <div class="input-group input-group"> <span class="input-group-addon" id="distractor-b-label">Distractor</span>
+              <input type="text" class="distractor form-control" placeholder="Type distractor stem here." aria-describedby="distractor-b-label">
+            </div>
+            <div class="input-group input-group"> <span class="input-group-addon" id="distractor-c-label">Distractor</span>
+              <input type="text" class="distractor form-control" placeholder="Type distractor stem here." aria-describedby="distractor-c-label">
+            </div>
+            <button type="reset">reset</button>
+            <button type="button" id="createQ-btn">add question</button>
+          </form>
+        </section>
+      </div>
+      <!--column-->
+      <div class="col-md-6">
+        <section id="submitT" aria-hidden="false">
+          <div class="panel panel-default">
+            <div class="panel-heading">Questions for {{hbs variable: test name}}</div>
+            <div class="panel-body">
+              <div id="submitT-display">
+                <div class="question">
+                  <dl>
+                    <dt>What team won the World Series in 1971?</dt>
+                    <dd>
+                      <ul>
+                        <li>Pittsburgh Pirates</li>
+                        <li>Baltimore Orioles</li>
+                        <li>New York Mets</li>
+                        <li>Houston Astros</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+                <!--question--> 
+                
+              </div>
+              <!--submitT-display--> 
+            </div>
+            <!--panel body-->
+            <div class="panel-footer">
+              <form id="submitT-form">
+                <button type="button" id="submitT-btn">submit test</button>
+              </form>
+            </div>
+            <!--panel-footer--> 
+          </div>
+          <!--panel--> 
+          
+        </section>
+        <!--displayT--> 
+        
+      </div>
+      <!--column--> 
+    </div>
+    <!--row--> 
+    
+  </main>
+  <footer> </footer>
+</div>
+<!--container--> 
+<script type="text/javascript" src="assets/js/client.js"></script>
 </body>
-
 </html>
