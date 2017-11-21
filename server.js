@@ -12,6 +12,7 @@ const bodyParser = require('body-parser')
 const env = require('dotenv').load()
 const exphbs = require('express-handlebars')
 const PORT = process.env.PORT || 8080;
+const path = require("path");
 
 // Requiring our models for syncing
 // =============================================================
@@ -51,14 +52,15 @@ app.use(express.static("public"));
 // =============================================================
 app.get('/', function(req, res) {
  
-    res.send('Welcome to Passport with Sequelize');
+    res.sendFile(path.join(__dirname + '/app/public/index.html'));
  
 });
+
 require("./app/routes/api_routes.js")(app);
 // let authRoute = 
 require('./app/routes/auth.js')(app,passport);
 
- //load passport strategies
+ //load passport strategies for User login
 require('./app/config/passport/passport.js')(passport, db.User);
 
 

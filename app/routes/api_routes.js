@@ -5,7 +5,7 @@
 // Dependencies
 // =============================================================
 const db = require("../models");
-// const api_controller = require("../../controllers/api_controller.js");
+const api_controller = require("../controllers/api_controller.js");
 
 // Routes
 // =============================================================
@@ -25,17 +25,21 @@ module.exports = function(app) {
   app.get("/api/all_tests", function(req, res) {
     //get user id
     //sequelize query
-    console.log(req.user);
     db.Test.findAll({
       where: {
         UserId: req.user.id
       }
     })
     .then(function(dbTest) {
-      console.log(dbTest);
       res.json(dbTest);
     });
   });
+
+  app.post("/api/create_test" , api_controller.create_test);
+
+
+  
+  // app.get("/api/:test_code" , api_controller.get_test);
 
   //Ajax call route
   // db.Question.findAll(

@@ -3,15 +3,25 @@
  
 <head>
     <title>Passport with Sequelize</title>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous">
+          
+    </script>
 </head>
  
 <body>
     <h2>Dashboard</h2>
     <h5>Hurray! you are logged in.</h5>
 
+    
     <div>
-    	<button type='button' id='get-tests'>
-    		Get All Tests
+        <input type="text" id="input1" placeholder="Put what you want here">
+    </div>
+    <div>
+    	<button type='button' id='create_test'>
+    		Create Test
     	</button>
     </div>
     <div>
@@ -24,9 +34,67 @@
     		Answer 2
     	</button>
     </div>
-    <div>
-    	<input type="text" id="input1" placeholder="Put what you want here">
-    </div>
+
+    <script type="text/javascript">
+        // (function(){                
+        //         $('#select_link').click(function(e){
+        //             e.preventDefault();
+        //             console.log('select_link clicked');
+                    
+        //              /*$.ajax({
+        //                 dataType: 'jsonp',
+        //                 data: "data=yeah",                      
+        //                 jsonp: 'callback',
+        //                 url: 'http://localhost:3000/endpoint?callback=?',                       
+        //                 success: function(data) {
+        //                     console.log('success');
+        //                     console.log(JSON.stringify(data));
+        //                 }
+        //             });*/
+        //             var data = {};
+        //             data.title = "title";
+        //             data.message = "message";
+                    
+        //             $.ajax({
+        //                 type: 'POST',
+        //                 data: JSON.stringify(data),
+        //                 contentType: 'application/json',
+        //                 url: 'http://localhost:3000/endpoint',                      
+        //                 success: function(data) {
+        //                     console.log('success');
+        //                     console.log(JSON.stringify(data));
+        //                 }
+        //             });
+        //             /*$.ajax('http://localhost:3000/endpoint', {
+        //                     type: 'POST',
+        //                     data: JSON.stringify(data),
+        //                     contentType: 'application/json',
+        //                     success: function() { console.log('success');},
+        //                     error  : function() { console.log('error');}
+        //             });*/
+        //         });             
+        //     });
+        $('#create_test').click(function(event){
+            event.preventDefault();
+            console.log("This button was definitely clicked?");
+            let parameters = {
+                type: 'POST',
+                url: "api/create_test",
+                data: {
+                        test_name: $("#input1").val()
+                      }
+            }
+            $.ajax(parameters)
+            .done(function(data) {
+              console.log("Successful");
+              console.log(data);
+            })
+            .catch(function(err){
+                console.log("Error: ")
+                console.log(err);
+            });
+        })
+    </script>
  
 </body>
  

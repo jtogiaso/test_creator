@@ -1,6 +1,6 @@
  
 exports.signup = function(req, res) {
- 
+    
     res.render('signup');
  
 }
@@ -12,6 +12,8 @@ exports.signin = function(req, res) {
 }
 
 exports.dashboard = function(req, res) {
+		console.log(req.user);
+		console.log(req.sessionID);
  
     res.render('dashboard');
  
