@@ -1,6 +1,35 @@
 let db_controller = require("./db_controller.js")
 
 module.exports = {
+
+	get_test: (req, res) => {
+		db_controller.get_test(req.user.id)
+			.then(data => {
+				res.send(data);
+			});
+	},
+
+	get_question: (req, res) => {
+		db_controller.get_question(req.body.test_id)
+			.then(data => {
+				res.send(data);
+			});
+	},
+
+	get_answer: (req, res) => {
+		db_controller.get_answer(req.body.question_id)
+			.then(data => {
+				res.send(data);
+			});
+	},
+
+	get_test: (req, res) => {
+		db_controller.get_test(req.user.id)
+			.then(data => {
+				res.send(data);
+			});
+	},
+
 	create_test: (req , res) => {
 		db_controller.create_test(req.user.id , req.body.test_name)
 			.then(data => {

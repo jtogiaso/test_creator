@@ -1,6 +1,31 @@
 let models = require("../models");
 
 module.exports = {
+
+	get_test: (userId) => {
+		return models.Test.findAll({
+			where: {
+				UserId: userId
+			}
+		})
+	},
+
+	get_question: (testId) => {
+		return models.Question.findAll({
+			where: {
+				TestId: testId
+			}
+		})
+	},
+
+	get_answer: (questionId) => {
+		return models.Answer.findAll({
+			where: {
+				QuestionId: questionId
+			}
+		})
+	},
+
 	create_test: (userId , testName) => {
 		return models.Test.create(
 			{
