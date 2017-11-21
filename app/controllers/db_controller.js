@@ -102,6 +102,16 @@ module.exports = {
 		)
 	},
 
+	create_result: (testId, userId, score) => {
+		return models.Result.create(
+			{
+				TestId: testId,
+				UserId: userId,
+				score: score
+			}
+		)
+	},
+
 	update_test_name: (testId, testName) => {
 		return models.Test.update(
 			{
@@ -139,6 +149,20 @@ module.exports = {
 				where:
 				{
 					AnswerId: answerId
+				}
+			}
+		)
+	},
+
+	update_result: (userId, score) => {
+		return models.Result.update(
+			{
+				score: score
+			},
+			{
+				where:
+				{
+					UserId: userId
 				}
 			}
 		)

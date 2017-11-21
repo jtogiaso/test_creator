@@ -84,6 +84,13 @@ module.exports = {
 	create_answer: (question_id , answer_phrase , correct_answer) => {
 		db_controller.create_answer(question_id , answer_phrase , correct_answer);
 	},
+
+	create_result: (req, res) => {
+		db.controller.create_result(req.body.test_id, req.user.id, score)
+			.then(data => {
+				res.send(data);
+			})
+	}
 	update_answer: (req , res) => {
 		db_controller.update_answer(req.body.answer_id , req.body.answer_phrase , req.body.correct_answer)
 			.then(data => {
@@ -98,6 +105,12 @@ module.exports = {
 	},
 	update_test_name: (req , res) => {
 		db_controller.update_test_name(req.body.test_id , req.body.test_name)
+			.then(data => {
+				res.send(data);
+			});
+	},
+	update_result: (req, res) => {
+		db_controller.update_result(req.body.student_id , req.body.score)
 			.then(data => {
 				res.send(data);
 			});
