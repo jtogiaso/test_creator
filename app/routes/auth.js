@@ -2,8 +2,8 @@
  
 module.exports = function(app , passport) {
  
-    app.get('/signup', authController.signup);
- 	app.get('/signin', authController.signin);
+    app.get('/signup', isAlreadyLoggedIn, authController.signup);
+ 	app.get('/signin', isAlreadyLoggedIn, authController.signin);
  	app.post('/signup', passport.authenticate('local-signup', 
  		{
 	        successRedirect: '/dashboard',
@@ -26,21 +26,22 @@ module.exports = function(app , passport) {
 
 	function isLoggedIn(req, res, next) {
  
-    if (req.isAuthenticated())
-     
-        return next();
+    if (req.isAuthenticated()) {
          
+		return next();
+	}
+    
     res.redirect('/signin');
  
 	}
 
-	// function isAlreadyLoggedIn(req, res, next) {
+	function isAlreadyLoggedIn(req, res, next) {
  
- //    if (req.isAuthenticated())
+    if (!req.user)
      
- //        return next();
+        return next();
          
- //    res.redirect('/dashboard');
+    res.redirect('/dashboard');
  
-	// }
+	}
 }
