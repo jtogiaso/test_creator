@@ -11,29 +11,14 @@ const api_controller = require("../controllers/api_controller.js");
 // =============================================================
 module.exports = function(app) {
 
-  app.get("/api/test", function(req , res) {
+// Get all tests
+  app.get("/api/test", api_controller.get_test);
 
-    console.log("Someone has called upon the API!");
-    res.json({
-        you: true ,
-        are: false,
-        not: "This is thunderous!",
-        here: 2
-      })
-  });
+// Get all tests
+  app.get("/api/question", api_controller.get_question);
 
-  app.get("/api/all_tests", function(req, res) {
-    //get user id
-    //sequelize query
-    db.Test.findAll({
-      where: {
-        UserId: req.user.id
-      }
-    })
-    .then(function(dbTest) {
-      res.json(dbTest);
-    });
-  });
+// Get all tests
+  app.get("/api/answer", api_controller.get_answer);
 
 // Add a new test
   app.post("/api/test", api_controller.create_test);

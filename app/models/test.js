@@ -29,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         onDelete: "cascade"
       }
     );
+    Test.hasMany(models.Result);
   };
   return Test;
 };
