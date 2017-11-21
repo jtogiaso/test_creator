@@ -3,28 +3,28 @@ let db_controller = require("./db_controller.js")
 module.exports = {
 
 	get_test: (req, res) => {
-		db_controller.get_test(req.body.test_id)
+		db_controller.get_test(req.body.id)
 			.then(data => {
 				res.send(data);
 			});
 	},
 
 	get_question: (req, res) => {
-		db_controller.get_question(req.body.test_id)
+		db_controller.get_question(req.body.id)
 			.then(data => {
 				res.send(data);
 			});
 	},
 
 	get_answer: (req, res) => {
-		db_controller.get_answer(req.body.question_id)
+		db_controller.get_answer(req.body.id)
 			.then(data => {
 				res.send(data);
 			});
 	},
 
 	get_result: (req, res) => {
-		db.controller.get_result(req.user.id)
+		db.controller.get_result(req.body.id)
 			.then(data => {
 				res.send(data);
 			});
@@ -32,6 +32,34 @@ module.exports = {
 
 	get_all_test: (req, res) => {
 		db_controller.get_all_test(req.user.id)
+			.then(data => {
+				res.send(data);
+			});
+	},
+
+	get_all_question: (req, res) => {
+		db_controller.get_all_question(req.body.test_id)
+			.then(data => {
+				res.send(data);
+			});
+	},
+
+	get_all_answer: (req, res) => {
+		db_controller.get_all_answer(req.body.question_id)
+			.then(data => {
+				res.send(data);
+			});
+	},
+
+	get_all_result_user: (req, res) => {
+		db_controller.get_all_answer(req.user.id)
+			.then(data => {
+				res.send(data);
+			});
+	},
+
+	get_all_result_test: (req, res) => {
+		db_controller.get_all_answer(req.body.test_id)
 			.then(data => {
 				res.send(data);
 			});

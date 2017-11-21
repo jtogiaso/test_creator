@@ -5,7 +5,7 @@ module.exports = {
 	get_test: (testId) => {
 		return models.Test.findOne({
 			where: {
-				TestId: testId
+				id: testId
 			}
 		})
 	},
@@ -18,7 +18,15 @@ module.exports = {
 		})
 	},
 
-	get_question: (testId) => {
+	get_question: (questionId) => {
+		return models.Question.findOne({
+			where: {
+				id: questionId
+			}
+		})
+	},
+
+	get_all_question: (testId) => {
 		return models.Question.findAll({
 			where: {
 				TestId: testId
@@ -26,7 +34,15 @@ module.exports = {
 		})
 	},
 
-	get_answer: (questionId) => {
+	get_answer: (answerId) => {
+		return models.Answer.findOne({
+			where: {
+				id: answerId
+			}
+		})
+	}
+
+	get_all_answer: (questionId) => {
 		return models.Answer.findAll({
 			where: {
 				QuestionId: questionId
@@ -34,10 +50,26 @@ module.exports = {
 		})
 	},
 
-	get_result: (userId) => {
+	get_result: (resultId) => {
+		return models.Result.findOne({
+			where: {
+				id: resultId
+			}
+		})
+	},
+
+	get_result_user: (userId) => {
 		return models.Result.findAll({
 			where: {
 				UserId: userId
+			}
+		})
+	},
+
+	get_result_test: (testId) => {
+		return models.Result.findAll({
+			where: {
+				TestId: testId
 			}
 		})
 	},
