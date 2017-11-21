@@ -38,4 +38,4 @@ VALUES ('Ashara Dayne' ,current_timestamp() , current_timestamp() , True , 1),
         ('1' ,current_timestamp() , current_timestamp() , False , 6),
         ('3' ,current_timestamp() , current_timestamp() , False, 6);
 
-SELECT * FROM `users`;
+SELECT * FROM `tests`;
