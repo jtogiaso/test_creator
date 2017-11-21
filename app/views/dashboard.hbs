@@ -79,11 +79,12 @@
             console.log("This button was definitely clicked?");
             let parameters = {
                 type: 'POST',
-                url: "api/new_test_name",
+                url: "api/test",
                 data: {
                         test_name: $("#input1").val()
                       }
             }
+            
             $.ajax(parameters)
             .done(function(data) {
               console.log("Successful");
