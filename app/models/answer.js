@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
     correct_answer: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   });  
   Answer.associate = function(models) {
