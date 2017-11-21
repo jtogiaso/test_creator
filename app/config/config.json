@@ -1,0 +1,45 @@
+{
+ 
+    "development": {
+ 
+        "username": "root",
+ 
+        "password": {"ENV" : "DB_PWD"},
+ 
+        "database": "test_creation",
+ 
+        "host": "127.0.0.1",
+ 
+        "dialect": "mysql"
+ 
+    },
+ 
+    "test": {
+ 
+        "username": "",
+ 
+        "password": {"ENV" : "DB_PWD"},
+ 
+        "database": "",
+ 
+        "host": "",
+ 
+        "dialect": "mysql"
+ 
+    },
+ 
+    "production": {
+ 
+        "username": "",
+ 
+        "password": {"ENV" : "DB_PWD"},
+ 
+        "database": "",
+ 
+        "host": "127.0.0.1",
+ 
+        "dialect": "mysql"
+ 
+    }
+ 
+}
