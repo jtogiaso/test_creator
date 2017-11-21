@@ -73,43 +73,57 @@ module.exports = {
 
 	delete_test: (testId) => {
 		return models.Test.update(
-		{
-			deleted: true
-		},
-		{
-			where:
 			{
-				TestId: testId
+				deleted: true
+			},
+			{
+				where:
+				{
+					TestId: testId
+				}
 			}
-		}
 		)
 	},
 
 	delete_question: (questionId) => {
 		return models.Question.update(
-		{
-			deleted: true
-		},
-		{
-			where:
 			{
-				QuestionId: questionId
+				deleted: true
+			},
+			{
+				where:
+				{
+					QuestionId: questionId
+				}
 			}
-		}
 		)
 	},
 
 	delete_answer: (answerId) => {
 		return models.Answer.update(
-		{
-			deleted: true
-		},
-		{
-			where:
 			{
-				AnswerId: answerId
+				deleted: true
+			},
+			{
+				where:
+				{
+					AnswerId: answerId
+				}
 			}
-		}
+		)
+	},
+
+	deleted_user: (userId) => {
+		return models.User.update(
+			{
+				status: "inactive"
+			},
+			{
+				where:
+				{
+					id: userId
+				}
+			}
 		)
 	}
 };
