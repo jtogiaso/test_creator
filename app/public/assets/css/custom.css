@@ -23,20 +23,10 @@ IMAGES
 FORMS
 
 */
-#createQ .input-group.input-group {
-  width: 100%;
-  margin-bottom: 10px; }
-
-#createQ .input-group-addon {
-  width: 125px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-align: right; }
-
-#createQ .form-control {
-  width: 290px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+#signup, #login {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto; }
 
 /***************************************
 
@@ -56,13 +46,5 @@ FOOTER
 /***************************************
 
 JS-BEHAVIOR
-
-*/
-*[aria-hidden="true"] {
-  display: none; }
-
-/***************************************
-
-MEDIA QUERIES
 
 */

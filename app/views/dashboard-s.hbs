@@ -1,0 +1,35 @@
+<h2>Dashboard</h2>
+<h5>Hurray! you are logged in as a STUDENT.</h5>
+
+ <div>
+        <input type="text" id="input1" placeholder="Put what you want here">
+    </div>
+    <div>
+        <button type='button' id='create_test'>
+            Create Test
+        </button>
+    </div>
+    <div>
+        <button type='button' id='get-questions'>
+            Get All Questions and Answers
+        </button>
+    </div>
+    <div>
+        <button type='button' id='answer-button-2'>
+            Answer 2
+        </button>
+    </div>
+
+    <div>
+    <h1>{{testObj.test_name}}</h1>
+    <ul>
+        {{#each testObj }}
+        <li>{{question_phrase}}</li>
+        {{#each answers}}
+        <input type="radio" id="{{@index}}+{{@../index}}" name="question{{@../index}}" value="answer">
+        <label for="{{@index}}+{{@../index}}">{{phrase}}</label>
+        {{/each}} 
+        {{/each}}
+    </ul>
+</div>
+

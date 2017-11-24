@@ -15,9 +15,12 @@ exports.dashboard = function(req, res) {
 		console.log(req.user);
 		console.log(req.sessionID);
  
-    res.render('dashboard');
+    res.render('dashboard-t');
+    //res.render('dashboard-s');
  
 }
+
+
 
 exports.logout = function(req, res) {
  

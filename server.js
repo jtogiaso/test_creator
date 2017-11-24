@@ -11,7 +11,7 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const env = require('dotenv').load()
 const exphbs = require('express-handlebars')
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5201;
 const path = require("path");
 
 // Requiring our models for syncing
@@ -36,24 +36,42 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-//For Handlebars
-// =============================================================
-app.set('views', './app/views')
-app.engine('hbs', exphbs({
-    extname: '.hbs'
-}));
-app.set('view engine', '.hbs');
-
 // Static directory
 // =============================================================
-app.use(express.static("public"));
+app.use(express.static('app/public'));
+
+//For Handlebars
+// =============================================================
+app.engine('.hbs', exphbs({
+    defaultLayout: 'main',
+    layoutsDir: __dirname + '/app/views/layouts',
+    extname: '.hbs'
+}));
+
+app.set('view engine', '.hbs');
+app.set('views', path.join(__dirname, '/app/views'));
+
+
 
 // Routes
 // =============================================================
 app.get('/', function(req, res) {
- 
-    res.sendFile(path.join(__dirname + '/app/public/index.html'));
- 
+     //res.sendFile(path.join(__dirname + '/app/public/index.html'));
+    res.render('index', {
+        title: 'quizomatic | home'
+    });
+});
+
+app.get('/dashboard-t', function(req, res) {
+    res.render('dashboard-t', {
+        title: 'teacher dashboard'
+    });
+});
+
+app.get('/dashboard-s', function(req, res) {
+    res.render('dashboard-s', {
+        title: 'student dashboard'
+    });
 });
 
 require("./app/routes/api_routes.js")(app);
@@ -131,7 +149,7 @@ app.get("/testTaker", function(req,res) {
 // =============================================================
 // End of test block.
 // =============================================================
->>>>>>> dae46ec0f7deb94a7c0ae65ca6222bc04b6851e8
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
