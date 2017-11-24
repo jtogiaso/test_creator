@@ -1,24 +1,25 @@
 
-    <h2>Dashboard</h2>
-    <h5>Hurray! you are logged in as a TEACHER.</h5>
-
-    
-    <div>
-        <input type="text" id="input1" placeholder="Put what you want here">
+	
+<div class="row">
+	<div class="col-4">
+	<div class="card" style="width: 20rem;">
+  <div class="card-header text-center">
+    Your Tests
+  </div><!--card header-->
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="">test 1</a></li>
+    <li class="list-group-item"><a href="">test 2</a></li>
+    <li class="list-group-item"><a href="">test 3</a></li>
+  </ul>
+</div><!--card-->	
+	</div><!--column-->
+	<div class="col-8 jumbotron">
+	<div class="input-group">
+      <input type="text" id="testCreate-input" class="form-control" placeholder="Type a name for your test here.">
+      <span class="input-group-btn">
+        <button id="testCreate-btn" class="btn btn-secondary" type="button">Create test</button>
+      </span>
     </div>
-    <div>
-        <button type='button' id='create_test'>
-            Create Test
-        </button>
-    </div>
-    <div>
-        <button type='button' id='get-questions'>
-            Get All Questions and Answers
-        </button>
-    </div>
-    <div>
-        <button type='button' id='answer-button-2'>
-            Answer 2
-        </button>
-    </div>
+	</div><!--column-->
+</div><!--row-->
 

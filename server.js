@@ -4,13 +4,13 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
-const express = require('express')
-const app = express()
-const passport = require('passport')
-const session = require('express-session')
-const bodyParser = require('body-parser')
-const env = require('dotenv').load()
-const exphbs = require('express-handlebars')
+const express = require('express');
+const app = express();
+const passport = require('passport');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const env = require('dotenv').load();
+const exphbs = require('express-handlebars');
 const PORT = process.env.PORT || 5201;
 const path = require("path");
 
@@ -58,19 +58,22 @@ app.set('views', path.join(__dirname, '/app/views'));
 app.get('/', function(req, res) {
      //res.sendFile(path.join(__dirname + '/app/public/index.html'));
     res.render('index', {
-        title: 'quizomatic | home'
+        title: 'quizomatic | home',
+		script: 'index'
     });
 });
 
 app.get('/dashboard-t', function(req, res) {
     res.render('dashboard-t', {
-        title: 'teacher dashboard'
+        title: 'teacher dashboard',
+        script: 'testCreate'
     });
 });
 
 app.get('/dashboard-s', function(req, res) {
     res.render('dashboard-s', {
-        title: 'student dashboard'
+        title: 'student dashboard',
+        script: 'testTake'
     });
 });
 
@@ -136,7 +139,7 @@ var testObj = {
     			4: {phrase: "answer4"}
     		}
     	}
-    }
+    };
 
     var test = {
     	testObj: testObj
@@ -166,7 +169,7 @@ db.sequelize.sync({ force: true })
 				console.log("App listening on PORT " + PORT);
 			}
 			else {
-				console.log(err)
+				console.log(err);
 			}
 
 		}); 
@@ -174,7 +177,7 @@ db.sequelize.sync({ force: true })
 	})
 	.catch(function(err) {
 
-		console.log(err, "Something went wrong with the Database Update!")
+		console.log(err, "Something went wrong with the Database Update!");
 
 	})
 ;
