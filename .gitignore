@@ -3,6 +3,7 @@ node_modules
 resources
 
 # Working html
+main.html
 index.html
 dashboard-s.html
 dashboard-t.html
