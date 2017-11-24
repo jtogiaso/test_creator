@@ -2,6 +2,11 @@ node_modules
 .DS_store
 resources
 
+# Working html
+index.html
+dashboard-s.html
+dashboard-t.html
+
 # Sass
 .sass-cache/
 *.css.map
