@@ -13,14 +13,30 @@
 </head>
 
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col-12">
-			<h1>Quizomatic</h1>
+
+<header class="container-fluid">
+	<div class="container">
+		<div class="row">
+		<div class="col-6">
+			<h1>Quizomatic</h1> 
+		</div><!--column-->
+		<div class="col-6">
+			<h2 class="text-right"><small>{{ subtitle }}</small></h2>
 		</div><!--column-->
 	</div><!--row-->
+		
+	</header>
+	
+</header><!--header container-->	
+
+<div class="container">
+
 	{{{ body }}}
-</div><!--container-->
+
+
+</div>
+
+
 
 
 <script type="text/javascript" src="/assets/js/{{ script }}.js"></script>

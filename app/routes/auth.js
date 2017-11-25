@@ -9,7 +9,7 @@ module.exports = function(app , passport) {
 	        successRedirect: '/dashboard-t',
 	        //successRedirect: '/dashboard-s',
 	 
-	        failureRedirect: '/signup'
+	        failureRedirect: '/index'
 	    } 	    
  
 	));
@@ -20,9 +20,9 @@ module.exports = function(app , passport) {
 
 		{
 	        successRedirect: '/dashboard-t',
-	        //successRedirct: '/dashboard-s',
+	        //successRedirect: '/dashboard-s',
 	 
-	        failureRedirect: '/signin'
+	        failureRedirect: '/index'
 	    }	    
 	));
 
@@ -36,17 +36,20 @@ module.exports = function(app , passport) {
      
         return next();
          
-    res.redirect('/signin');
+    res.redirect('/dashboard-t');
+    //res.redirect('/dashboard-s');
  
 	}
 
-	// function isAlreadyLoggedIn(req, res, next) {
+
+	function isAlreadyLoggedIn(req, res, next) {
  
- //    if (req.isAuthenticated())
+    if (!req.user)
      
- //        return next();
+        return next();
          
- //    res.redirect('/dashboard');
+    res.redirect('/dashboard-t');
+    //res.redirect('/dashboard-s');
  
-	// }
+	}
 }

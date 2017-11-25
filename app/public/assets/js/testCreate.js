@@ -9,13 +9,24 @@
 var currentUser;
 var currentTest;
 
+// getUser
+// =============================================================
+var getUser = function() {
+	currentUser = sessionStorage.getItem("username");
+	if (currentUser) {
+		$("#currentUser").text(currentUser);
+	} else {
+		$("#currentUser").text("ERROR, missing username");
+	}
+};
+
 // Create a test
 // =============================================================
 
 var createTest = function() {
 	let parameters = {
 		type: 'POST',
-		url: "api/test",
+		url: "/api/test",
 		data: {
 			test_name: $("#testCreate-input").val().trim()
 		}
@@ -33,21 +44,40 @@ var createTest = function() {
 		});	
 };
 
+// Get List of tests created by user
+// =============================================================
+
+var getTestList = function() {
+	let parameters = {
+		type: 'GET',
+		url: "/api/test"
+	};
+
+	$.ajax(parameters)
+		.done(function (data) {			
+			console.log(data);
+		})
+		.catch(function (err) {
+			console.log("Error: ");
+			console.log(err);
+		});	
+};
+
 // Create a question
 // =============================================================
 
 var createQuestion = function() {
 	let parameters = {
 		type: 'POST',
-		url: "api/question",
+		url: "/api/question",
 		data: {
 			test_name: currentTest,
-			question_phrase : $("").val().trim(),
+			question_phrase : $("input[name='stem']").val().trim(),
 			answers: {
-				1: {phrase: $("").val().trim(), correct_answer: true},
-				2: {phrase: $("").val().trim(), correct_answer: false},
-				3: {phrase: $("").val().trim(), correct_answer: false},
-				4: {phrase: $("").val().trim(), correct_answer: false}			
+				1: {phrase: $("input[aria-describedby='answer-label']").val().trim(), correct_answer: true},
+				2: {phrase: $("input[aria-describedby='distractor-a-label']").val().trim(), correct_answer: false},
+				3: {phrase: $("input[aria-describedby='distractor-a-label']").val().trim(), correct_answer: false},
+				4: {phrase: $("input[aria-describedby='distractor-a-label']").val().trim(), correct_answer: false}			
 				}
 		}
 	};
@@ -74,10 +104,19 @@ $('#testCreate-btn').click(function (event) {
 
 });
 
+$('#questionCreate-btn').click(function (event) {
+	event.preventDefault();
+	console.log("Create test button was clicked.");
+	createTest();
+
+});
+
 // Document Ready
 // =============================================================
 
 $( document ).ready(function() {	
-	console.log("Index.js is now loaded.");
+	console.log("testCreate.js is now loaded.");
+	getUser();
+	getTestList();
 });
 

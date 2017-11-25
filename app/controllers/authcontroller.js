@@ -1,13 +1,13 @@
  
 exports.signup = function(req, res) {
     
-    res.render('signup');
+    res.render('index');
  
 }
 
 exports.signin = function(req, res) {
  
-    res.render('signin');
+    res.render('index');
  
 }
 

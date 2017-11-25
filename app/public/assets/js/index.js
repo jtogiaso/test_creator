@@ -16,15 +16,6 @@ var setUser = function(email) {
 	sessionStorage.setItem("username", currentUser);
 };
 
-var getUser = function() {
-	currentUser = sessionStorage.getItem("username");
-	if (currentUser) {
-		$("#user-label").text(currentUser);
-	} else {
-		$("#user-label").text("ERROR, missing username");
-	}
-};
-
 // Event Listeners
 // =============================================================
 

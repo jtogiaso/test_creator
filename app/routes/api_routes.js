@@ -11,16 +11,16 @@ const api_controller = require("../controllers/api_controller.js");
 // =============================================================
 module.exports = function(app) {
 
-  app.get("/api/test", function(req , res) {
+  // app.get("/api/test", function(req , res) {
 
-    console.log("Someone has called upon the API!");
-    res.json({
-        you: true ,
-        are: false,
-        not: "This is thunderous!",
-        here: 2
-      })
-  });
+  //   console.log("Someone has called upon the API!");
+  //   res.json({
+  //       you: true ,
+  //       are: false,
+  //       not: "This is thunderous!",
+  //       here: 2
+  //     })
+  // });
 
   app.get("/api/all_tests", function(req, res) {
     //get user id
@@ -34,6 +34,9 @@ module.exports = function(app) {
       res.json(dbTest);
     });
   });
+
+// Get one test for test taker, should also retrive all the questions and answers
+  app.get("/api/test", api_controller.get_test);  
 
 // Add a new test
   app.post("/api/test", api_controller.create_test);
