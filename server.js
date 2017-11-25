@@ -151,7 +151,7 @@ var testObj = {
     };
 
 app.get("/testTaker", function(req,res) {
-    res.render("takeT", test);
+    res.render("testTake", test);
 });
 
 // =============================================================

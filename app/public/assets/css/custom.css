@@ -3,6 +3,12 @@
 Base
 
 */
+html, body {
+  height: 100%; }
+
+.page-wrap {
+  min-height: 100%; }
+
 /***************************************
 
 BUTTONS
@@ -42,17 +48,21 @@ HEADER
 */
 /***************************************
 
-HEADER
+MAIN
 
 */
-header {
-  background-color: #C9C9C9; }
+main {
+  padding-bottom: -50px; }
 
 /***************************************
 
 FOOTER
 
 */
+.footer {
+  height: 50px;
+  margin-top: -50px; }
+
 /***************************************
 
 JS-BEHAVIOR
