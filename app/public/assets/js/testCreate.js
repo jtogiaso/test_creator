@@ -1,4 +1,5 @@
 console.log("testCreate.js is loaded.");
+
 var currentUser;
 var currentTest;
 
