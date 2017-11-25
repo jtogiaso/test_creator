@@ -36,19 +36,7 @@ $("#signup").on("submit", function (event) {
 
 
 // set user to 
-var setUser = function() {
-	currentUser = $("input[name='user_name']").val().trim();
-	sessionStorage.setItem("username", currentUser);
-};
 
-var getUser = function() {
-	currentUser = sessionStorage.getItem("username");
-	if (currentUser) {
-		$("#user-label").text(currentUser);
-	} else {
-		$("#user-label").text("ERROR, missing username");
-	}
-};
 
 $("#signin").on("submit", function(event) {
 	event.preventDefault();

@@ -1,7 +1,16 @@
-console.log("testCreate.js is loaded.");
+// *****************************************************************************
+//
+// testCreate.js - Client script for login/signup page.
+//
+// =============================================================
 
+// Global Variables
+// =============================================================
 var currentUser;
 var currentTest;
+
+// Create a test
+// =============================================================
 
 var createTest = function() {
 	let parameters = {
@@ -23,6 +32,9 @@ var createTest = function() {
 			console.log(err);
 		});	
 };
+
+// Create a question
+// =============================================================
 
 var createQuestion = function() {
 	let parameters = {
@@ -52,6 +64,9 @@ var createQuestion = function() {
 		});	
 };
 
+// Event Listeners
+// =============================================================
+
 $('#testCreate-btn').click(function (event) {
 	event.preventDefault();
 	console.log("Create test button was clicked.");
@@ -59,55 +74,10 @@ $('#testCreate-btn').click(function (event) {
 
 });
 
-var testObj = {
-    	test_name: "whatever",
-    	1: {
-    		question_phrase: "question1",
-    		answers: {
-    			1: {phrase: "answer1"},
-    			2: {phrase: "answer2"},
-    			3: {phrase: "answer3"},
-    			4: {phrase: "answer4"}
-    		}
-    	},
-    	2: {
-    		question_phrase: "question2",
-    		answers: {
-    			1: {phrase: "answer1"},
-    			2: {phrase: "answer2"},
-    			3: {phrase: "answer3"},
-    			4: {phrase: "answer4"}
-    		}
-    	},
-    	3: {
-    		question_phrase: "question3",
-    		answers: {
-    			1: {phrase: "answer1"},
-    			2: {phrase: "answer2"},
-    			3: {phrase: "answer3"},
-    			4: {phrase: "answer4"}
-    		}
-    	},
-    	4: {
-    		question_phrase: "question4",
-    		answers: {
-    			1: {phrase: "answer1"},
-    			2: {phrase: "answer2"},
-    			3: {phrase: "answer3"},
-    			4: {phrase: "answer4"}
-    		}
-    	},
-    	5: {
-    		question_phrase: "question5",
-    		answers: {
-    			1: {phrase: "answer1"},
-    			2: {phrase: "answer2"},
-    			3: {phrase: "answer3"},
-    			4: {phrase: "answer4"}
-    		}
-    	}
-    };
+// Document Ready
+// =============================================================
 
-    var test = {
-    	testObj: testObj
-    };
+$( document ).ready(function() {	
+	console.log("Index.js is now loaded.");
+});
+
