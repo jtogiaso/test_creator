@@ -44,6 +44,9 @@ var getTest = function(neededTest) {
 		});	
 };
 
+// Get and display results
+// // =============================================================
+
 
 
 // Event Listeners
@@ -56,6 +59,12 @@ $('#testGet-btn').click(function (event) {
 	currentTest = $("#testGet-input").val().trim();
 	getTest(currentTest);
 
+});
+
+$('#submitTest-btn').click(function (event) {
+	event.preventDefault();
+	console.log("Submit button was clicked.");
+	$("#resultsDisplay").attr("aria-hidden", false);
 });
 
 
