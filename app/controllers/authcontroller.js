@@ -2,7 +2,6 @@
 
 exports.sign = function(req, res) {
     res.render('sign');
- 
 }
 
 exports.dashboard = function(req, res) {

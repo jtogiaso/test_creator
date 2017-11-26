@@ -6,9 +6,6 @@ module.exports = function(app , passport) {
 	let user_type = true;
  
     app.get('/', isAlreadyLoggedIn, authController.sign);
-    console.log("<--------------------------------------------------------------------------->");
-	console.log(passport);
-	console.log("<--------------------------------------------------------------------------->");
  	app.post('/signup', passport.authenticate('local-signup', 
  		{
 	        successRedirect: '/dashboard',
@@ -32,22 +29,22 @@ module.exports = function(app , passport) {
 
 	function isLoggedIn(req, res, next) {
  
-    if (req.isAuthenticated()) {
-         
-		return next();
-	}
-    
-    res.redirect('/');
+		if (req.isAuthenticated()) {
+		     
+			return next();
+		}
+
+		res.redirect('/');
  
 	}
 
 	function isAlreadyLoggedIn(req, res, next) {
  
-    if (!req.user)
-     
-        return next();
-         
-    res.redirect('/dashboard');
+	    if (!req.user)
+	     
+	        return next();
+	         
+	    res.redirect('/dashboard');
  
 	}
 }
