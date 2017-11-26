@@ -1,0 +1,99 @@
+<div class="row jumbotron">
+	<div class="col-4">
+	<div class="card">
+  <div class="card-header text-center">
+   Tests for <span id="currentUser"></span>
+  </div><!--card header-->
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="">test 1</a></li>
+    <li class="list-group-item"><a href="">test 2</a></li>
+    <li class="list-group-item"><a href="">test 3</a></li>
+  </ul>
+    <div class="input-group" style="padding-top: 50px;">
+      <input type="text" id="testCreate-input" class="form-control" placeholder="Type test name here.">
+      <span class="input-group-btn">
+        <button id="testCreate-btn" class="btn btn-secondary" type="button">Create test</button>
+      </span>
+    </div>
+</div><!--card-->	
+	</div><!--column-->
+	<div class="col-8">
+        <section id="createQ">
+          <form id="createQ-form">
+            <legend>Create a question</legend>
+			 
+            <div class="input-group input-group"> <span class="input-group-addon" id="stem-label">Question Stem</span>
+              <input type="text" name="stem" class="form-control" placeholder="Type question stem here." aria-describedby="stem-label">
+            </div>
+            <div class="input-group input-group"> <span class="input-group-addon" id="answer-label">Answer</span>
+              <input type="text" name="answer" value="true" class="form-control" placeholder="Type answer here." aria-describedby="answer-label">
+            </div>
+            <div class="input-group input-group"> <span class="input-group-addon" id="distractor-a-label">Distractor</span>
+              <input type="text" name="answer" value="false" class="form-control" placeholder="Type distractor stem here." aria-describedby="distractor-a-label">
+            </div>
+            <div class="input-group input-group"> <span class="input-group-addon" id="distractor-b-label">Distractor</span>
+              <input type="text" name="answer" value="false" class="form-control" placeholder="Type distractor stem here." aria-describedby="distractor-b-label">
+            </div>
+            <div class="input-group input-group"> <span class="input-group-addon" id="distractor-c-label">Distractor</span>
+              <input type="text" name="answer" value="false" class="form-control" placeholder="Type distractor stem here." aria-describedby="distractor-c-label">
+            </div>
+            <button class="btn btn-secondary" type="reset">reset</button>
+            <button class="btn btn-secondary" type="button" id="questionCreate-btn">add question</button>
+			 
+          </form>
+        </section>
+	</div><!--column-->
+</div><!--row-->
+	
+    <div class="row" id="questionUI">
+ 
+      <div class="col-12">
+        <section id="displayQ">
+		<h3>Questions for test</h3>
+          <div class="panel panel-default" id="questionId1">
+            <div class="panel-heading question-stem">What team won the World Series in 1971?</div>
+            <div class="panel-body">
+                      <ul class="answer-list">
+                        <li data-answer="true">Pittsburgh Pirates</li>
+                        <li data-answer="false">Baltimore Orioles</li>
+                        <li data-answer="false">New York Mets</li>
+                        <li data-answer="false">Houston Astros</li>
+                      </ul>
+            </div>
+            <!--panel body-->
+            <div class="panel-footer">
+               <button data-target="questionId" type="button" class="deleteQ-btn">update</button>
+			   <button data-target="questionId" type="button" class="updateQ-btn">delete</button>
+              
+           </div>
+            <!--panel-footer--> 
+          </div>
+          <!--panel--> 
+			
+          <div class="panel panel-default" id="questionId2">
+            <div class="panel-heading question-stem">What team won the World Series in 1976?</div>
+            <div class="panel-body">
+                      <ul class="answer-list">
+                        <li data-answer="true">Cincinnati Reds</li>
+                        <li data-answer="false">New York Yankees</li>
+                        <li data-answer="false">Toronto Blue Jays</li>
+                        <li data-answer="false">Los Angeles Dodgers</li>
+                      </ul>
+            </div>
+            <!--panel body-->
+            <div class="panel-footer">
+               <button data-target="questionId" type="button" class="deleteQ-btn">update</button>
+			   <button data-target="questionId" type="button" class="updateQ-btn">delete</button>
+              
+           </div>
+            <!--panel-footer--> 
+          </div>
+          <!--panel--> 
+          
+        </section>
+        <!--displayT--> 
+        
+      </div>
+      <!--column--> 
+    </div>
+    <!--row--> 	

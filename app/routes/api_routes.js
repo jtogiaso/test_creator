@@ -45,7 +45,7 @@ module.exports = function(app) {
   app.post("/api/question", api_controller.create_question);
 
 //Add a result
-  app.post("/api/result", api_controller.create_result)
+  app.post("/api/result", api_controller.calculate_result);
 
   // ===============================================================================
 
@@ -75,3 +75,4 @@ module.exports = function(app) {
 //Delete Answer
   app.delete("/api/answer", api_controller.delete_answer);
 
+};

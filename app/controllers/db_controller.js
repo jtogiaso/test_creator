@@ -40,14 +40,20 @@ module.exports = {
 				id: answerId
 			}
 		})
-	}
+	},
 
-	get_all_answer: (questionId) => {
-		return models.Answer.findAll({
-			where: {
-				QuestionId: questionId
-			}
-		})
+	get_all_answer: () => models.Answer.findAll(),
+	
+	get_multiple_answers_by_id: (answers_id_array) => {
+		console.log(answers_id_array);
+		return models.Answer.findAll(
+				{
+					where:
+					{
+						id: answers_id_array
+					}
+				}
+			)
 	},
 
 	get_result: (resultId) => {
@@ -222,5 +228,14 @@ module.exports = {
 				}
 			}
 		)
+	},
+	check_answer: (answerId) => {
+		return models.Answer.findOne(
+				{
+					where: {
+						id: answerId
+					}
+				}
+			)
 	}
 };

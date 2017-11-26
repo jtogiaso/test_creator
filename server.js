@@ -50,11 +50,6 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-app.get('/', function(req, res) {
- 
-    res.sendFile(path.join(__dirname + '/app/public/index.html'));
- 
-});
 
 require("./app/routes/api_routes.js")(app);
 // let authRoute = 

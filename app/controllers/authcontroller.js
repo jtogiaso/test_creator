@@ -1,21 +1,26 @@
- 
-exports.signup = function(req, res) {
-    
-    res.render('signup');
- 
-}
 
-exports.signin = function(req, res) {
+
+exports.sign = function(req, res) {
  
-    res.render('signin');
+    res.render('sign');
  
 }
 
 exports.dashboard = function(req, res) {
-		console.log(req.user);
-		console.log(req.sessionID);
- 
-    res.render('dashboard');
+ 	
+	if (req.user.RoleId === 1){
+		console.log("This guy is a creator!");
+	 	res.render('dashboard-t');
+	 }
+	 else if (req.user.RoleId === 2){
+	     res.render('dashboard-s');
+	 }
+	 else if (req.user.RoleId === 3){
+	 	res.send("You are a reviewer! This page is coming soon!");
+	 }
+	 else{
+	 	res.send("This page does not exist");
+	 }
  
 }
 

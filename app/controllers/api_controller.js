@@ -1,10 +1,17 @@
-let db_controller = require("./db_controller.js")
+let db_controller = require("./db_controller.js");
 
-module.exports = {
-
+let api_controller = {
 	get_test: (req, res) => {
 		db_controller.get_test(req.body.id)
 			.then(data => {
+				// let testObj = {};
+				// testObj.test_name = req.body.test_name;
+				// scope.get_all_question(data.id)
+				// 	.then(data => {
+				// 		for (let i = 0; i < ){
+				// 			testObj[i].question_phrase = data[i].question_phrase;
+				// 		}
+				// 	});
 				res.send(data);
 			});
 	},
@@ -24,7 +31,7 @@ module.exports = {
 	},
 
 	get_result: (req, res) => {
-		db.controller.get_result(req.body.id)
+		db_controller.get_result(req.body.id)
 			.then(data => {
 				res.send(data);
 			});
@@ -45,10 +52,8 @@ module.exports = {
 	},
 
 	get_all_answer: (req, res) => {
-		db_controller.get_all_answer(req.body.question_id)
-			.then(data => {
-				res.send(data);
-			});
+		console.log("nada");
+		res.send("aint nada here");
 	},
 
 	get_all_result_user: (req, res) => {
@@ -72,25 +77,52 @@ module.exports = {
 			});
 	},
 	create_question: (req , res) => {
-		let scope = this;
 		db_controller.create_question(req.body.test_id , req.body.question_phrase)
 			.then(data => {
 				for (let answer in req.body.answers){
-					scope.create_answer(data.id , req.body.answers[answer].answer_phrase , req.body.answers[answer].correct_answer)
+					x.create_answer(data.id , req.body.answers[answer].answer_phrase , req.body.answers[answer].correct_answer)
 				}
 				res.send(data);
 			})
 	},
+
 	create_answer: (question_id , answer_phrase , correct_answer) => {
 		db_controller.create_answer(question_id , answer_phrase , correct_answer);
 	},
 
-	create_result: (req, res) => {
-		db.controller.create_result(req.body.test_id, req.user.id, score)
+	calculate_result: (req, res) => {
+		
+		let answers_id_array = [];
+		for (let key in req.body.answers) {
+			answers_id_array.push(req.body.answers[key].id);
+		}
+		api_controller.get_multiple_answers_by_id(answers_id_array)
 			.then(data => {
-				res.send(data);
+				api_controller.create_result(req.body.test_id , req.body.id , api_controller.calculate_score(data))
+					.then( data => {
+						res.json(data);
+					});
 			})
-	}
+	},
+
+	create_result: (test_id , user_id , score) => db_controller.create_result(test_id , user_id , score),
+
+	get_multiple_answers_by_id: (answers_id_array) => db_controller.get_multiple_answers_by_id(answers_id_array),
+
+	calculate_score: data => {
+		let total_correct = 0;
+		let total_questions = 0;
+		for (let index in data){
+			if (data[index].correct_answer) {
+				total_correct++;
+			}
+			total_questions++;
+		};
+
+		return (100 * (total_correct / total_questions)).toFixed(2);
+
+	},
+
 	update_answer: (req , res) => {
 		db_controller.update_answer(req.body.answer_id , req.body.answer_phrase , req.body.correct_answer)
 			.then(data => {
@@ -140,3 +172,5 @@ module.exports = {
 			});
 	}
 };
+
+module.exports = api_controller;
