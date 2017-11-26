@@ -44,7 +44,7 @@ app.use(express.static('app/public'));
 // =============================================================
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
-    layoutsDir: __dirname + '/app/views/layouts',
+    layoutsDir: __dirname + '/app/views/layouts',    
     extname: '.hbs'
 }));
 
