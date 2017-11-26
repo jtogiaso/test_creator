@@ -1,13 +1,14 @@
  var authController = require('../controllers/authcontroller.js');
  
 module.exports = function(app , passport) {
-	// console.log("<--------------------------------------------------------------------------->");
-	// console.log(passport);
-	// console.log("<--------------------------------------------------------------------------->");
+
 
 	let user_type = true;
  
     app.get('/', isAlreadyLoggedIn, authController.sign);
+    console.log("<--------------------------------------------------------------------------->");
+	console.log(passport);
+	console.log("<--------------------------------------------------------------------------->");
  	app.post('/signup', passport.authenticate('local-signup', 
  		{
 	        successRedirect: '/dashboard',
