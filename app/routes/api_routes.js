@@ -38,7 +38,7 @@ module.exports = function(app) {
 
 
 // Add a new test
-  app.post("/api/test", api_controller.get_test);
+  app.post("/api/test", api_controller.create_test);
 
 // Add a question to test
   app.post("/api/question", api_controller.create_question);

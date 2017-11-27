@@ -1,137 +1,36 @@
 let db_controller = require("./db_controller.js");
 
+let Question_and_Answers = function (q_n_a_obj) {
+	this.question_phrase = q_n_a_obj.question_phrase;
+	this.question_id = q_n_a_obj.id;
+	this.test_id = q_n_a_obj.TestId;
+	this.answers = [];
+	for (let answer in q_n_a_obj.Answers){
+		this.answers.push(new Answers_Constructor(q_n_a_obj.Answers[answer]));
+	}
+}
+
+let Answers_Constructor = function (a_obj) {
+	this.answer = a_obj.answer_phrase;
+	this.answer_id = a_obj.id;
+}
+
 let api_controller = {
 	get_test: (req, res) => {
-
+		console.log("<--------------------------------------------------------------------------------------------------->");
+		console.log(req.body);
+		console.log("<--------------------------------------------------------------------------------------------------->");
 		let test_array = [];
-		let question_id_array_query = [];
-
-
+		console.log(req.body.test_name);
 		db_controller.get_test_by_name(req.body.test_name)
 			.then(data => {
-				return db_controller.get_all_question(data.id);
+				return db_controller.get_all_question_and_answers(data.id);
 			})
 			.then(data => {
-				for (let i in data){
-					let question_object = {};
-					question_object.question_phrase = data[i].dataValues.question_phrase;
-					question_object.test_id = data[i].dataValues.TestId;
-					question_object.question_id = data[i].dataValues.id
-
-					
-					console.log("<--------------------------------------------------------->");
-					console.log(data[i].dataValues);
-					console.log("<--------------------------------------------------------->");
-				}
-				res.json(data);
+				for (let q_obj in data)
+					test_array.push(new Question_and_Answers(data[q_obj]));
+				res.send(test_array);
 			});
-		//Retrieve test_id
-		//Search for all questions tied to test_id
-		//Create array with all question_id's
-		//Search for all answers tied to the multi-query of question_ids
-		//Construct Test Array of Question Objects
-			// let testArray = []
-			// Construct each question object
-			
-			// [
-
-			// 	{	
-			// 		Question_phrase: 'aksjfkjb?',
-			// 		Answers: [
-			// 			{
-			// 				answer_phrase: 'w',
-			// 				answer_id: 4
-			// 			},
-			// 			{
-			// 				answer_phrase: 'd',
-			// 				answer_id: 3
-			// 			},
-			// 			{
-			// 				answer_phrase: 'c',
-			// 				answer_id: 2
-			// 			},
-			// 			{
-			// 				answer_phrase: 'b',
-			// 				answer_id: 1
-			// 			}
-			// 		],
-			// 		Question_Id: 1,
-			// 		Test_Id: 2
-			// 	},
-			// 	{	
-			// 		Question_phrase: 'aksjfkjb?',
-			// 		Answers: [
-			// 			{
-			// 				answer_phrase: 'w',
-			// 				answer_id: 4
-			// 			},
-			// 			{
-			// 				answer_phrase: 'd',
-			// 				answer_id: 3
-			// 			},
-			// 			{
-			// 				answer_phrase: 'c',
-			// 				answer_id: 2
-			// 			},
-			// 			{
-			// 				answer_phrase: 'b',
-			// 				answer_id: 1
-			// 			}
-			// 		],
-			// 		Question_Id: 1,
-			// 		Test_Id: 2
-			// 	}{	
-			// 		Question_phrase: 'aksjfkjb?',
-			// 		Answers: [
-			// 			{
-			// 				answer_phrase: 'w',
-			// 				answer_id: 4
-			// 			},
-			// 			{
-			// 				answer_phrase: 'd',
-			// 				answer_id: 3
-			// 			},
-			// 			{
-			// 				answer_phrase: 'c',
-			// 				answer_id: 2
-			// 			},
-			// 			{
-			// 				answer_phrase: 'b',
-			// 				answer_id: 1
-			// 			}
-			// 		],
-			// 		Question_Id: 1,
-			// 		Test_Id: 2
-			// 	}
-			
-			
-			// ]
-			
-
-
-        // var test = {};
-        // var testObj = {};
-        // db_controller.get_test(1)
-        //     .then(data1 => {
-        //         let scope2 = this;
-        //         console.log(data1);
-        //         testObj.test_name = data1.test_name;
-        //         db_controller.get_all_question(data1.id)
-        //             .then(data2 => {
-        //                 for(var i = 0; i < data2.length; i++) {
-        //                     testObj[i].question_phrase = data2[i].question_phrase;
-        //                     db_controller.get_all_answer(data2[i].id)
-        //                     .then(data3 => {
-        //                         for(var j = 0; j < data3.length; j++) {
-        //                             testObj[i].answers[j].phrase = data[j].answer_phrase;
-        //                             testObj[i].answers[j].answer_id = data[j].id;
-        //                         }
-        //                     });
-        //                 };
-        //             });
-        //         test.testObj = testObj;
-        //         res.send(test);
-        //     });
     },
 
 	get_question: (req, res) => {

@@ -41,6 +41,13 @@ module.exports = {
 			}
 		})
 	},
+	get_all_question_and_answers: (testId) => {
+		return models.Question.findAll({
+			where: {
+				TestId: testId
+			}, 
+			include: [models.Answer]})
+	},
 
 	get_answer: (answerId) => {
 		return models.Answer.findOne({

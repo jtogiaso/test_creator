@@ -26,13 +26,13 @@ var getUser = function() {
 // Load a test
 // =============================================================
 
-var getTest = function(neededTest) {
-	console.log(neededTest);
+var getTest = function(student_test_query) {
+	console.log(student_test_query);
 	let parameters = {
 		type: 'GET',
 		url: "/api/test",
 		data: {
-			test_name: neededTest
+			test_name: student_test_query
 		}
 	};
 
@@ -61,7 +61,7 @@ $('#testGet-btn').click(function (event) {
 	$("#questionDisplay").attr("aria-hidden", false);
 	currentTest = $("#testGet-input").val().trim();
 	getTest(currentTest)
-		.then(data => {
+		.done(data => {
 			console.log("Made it past promise")
 			let parameters = {
 				type: 'GET',
