@@ -14,9 +14,9 @@ let api_controller = {
 			.then(data => {
 				for (let i in data){
 					let question_object = {};
-					let question_object.question_phrase = data[i].dataValues.question_phrase;
-					let question_object.test_id = data[i].dataValues.TestId;
-					let question_object.question_id = data[i].dataValues.id
+					question_object.question_phrase = data[i].dataValues.question_phrase;
+					question_object.test_id = data[i].dataValues.TestId;
+					question_object.question_id = data[i].dataValues.id
 
 					
 					console.log("<--------------------------------------------------------->");
