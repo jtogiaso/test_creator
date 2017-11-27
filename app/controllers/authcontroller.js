@@ -19,11 +19,12 @@ exports.dashboard = (req, res) => {
 	    });
 	 }
 	 else if (req.user.RoleId === 2){
+        console.log("This guy is a taker!");
 	    res.render('dashboard-s', {
 	        title: 'student dashboard',
 	        subtitle: 'student dashboard',
 	        script: 'testTake',
-			test: 
+			test: test
 	    });
 	 }
 	 else if (req.user.RoleId === 3){
@@ -101,8 +102,13 @@ var testObj = {
 
 
 exports.take_test = (req, res) => {
- 
- 	res.render("takeT", req.body.test);
- 
+    console.log("about to take test");
+ 	res.render('takeT', {
+            title: 'take tesr',
+            subtitle: 'take test',
+            script: '',
+            test: ''
+        });
+    console.log("test loaded");
 }
 
