@@ -9,8 +9,6 @@
 var currentTest;
 var currentUser;
 
-alert('oaisfhosihgfd');
-
 // getUser
 // =============================================================
 var getUser = function() {
@@ -30,21 +28,16 @@ var getTest = function(student_test_query) {
 	console.log(student_test_query);
 	let parameters = {
 		type: 'GET',
-		url: "/api/test",
-		data: {
-			test_name: student_test_query
-		}
+		url: "/api/test/" + student_test_query
 	};
 
-	return $.ajax(parameters);
-		// .done(function (data) {
-		// 	console.log("Test " + parameters.data.test_name + " has been loaded.");
-		// 	console.log(data);
-		// })
-		// .catch(function (err) {
-		// 	console.log("Error: ");
-		// 	console.log(err);
-		// });	
+	$.ajax(parameters)
+	.done( data => {
+		console.log("This should be the id of the new test: " + data)
+		let test_url = window.location.href.split('/');
+		let new_href = test_url[0] + "//" + test_url[2] + "/api/take/" + data;
+		 window.location.replace(new_href);
+	});
 };
 
 // Get and display results
@@ -60,19 +53,7 @@ $('#testGet-btn').click(function (event) {
 	console.log("Get test button was clicked.");
 	$("#questionDisplay").attr("aria-hidden", false);
 	currentTest = $("#testGet-input").val().trim();
-	getTest(currentTest)
-		.done(data => {
-			console.log("Made it past promise")
-			let parameters = {
-				type: 'GET',
-				url: "/testTaker",
-				data: {
-					test: data
-				}
-			};
-
-			$.ajax(parameters);
-		});
+	getTest(currentTest);
 
 });
 

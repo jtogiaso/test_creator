@@ -9,7 +9,18 @@ module.exports = {
 			}
 		})
 	},
-
+	body_test: (test_obj) => {
+		return models.Body.create({
+			body: test_obj
+		})
+	},
+	get_body: (bodyId) => {
+		return models.Body.findOne({
+			where: {
+				id: bodyId
+			}
+		})
+	},
 	get_test_by_name: (testName) => {
 		return models.Test.findOne({
 			where: {

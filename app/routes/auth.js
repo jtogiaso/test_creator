@@ -4,6 +4,7 @@ module.exports = function(app , passport) {
 
 
 	let user_type = true;
+    console.log(passport.authenticate);
  
     app.get('/', isAlreadyLoggedIn, authController.sign);
  	app.post('/signup', passport.authenticate('local-signup', 
@@ -24,8 +25,6 @@ module.exports = function(app , passport) {
 	        failureRedirect: '/'
 	    }
 	));
-
-	app.get("/testTaker", authController.take_test);
 
 
 

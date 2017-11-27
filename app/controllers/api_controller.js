@@ -17,19 +17,19 @@ let Answers_Constructor = function (a_obj) {
 
 let api_controller = {
 	get_test: (req, res) => {
-		console.log("<--------------------------------------------------------------------------------------------------->");
-		console.log(req.body);
-		console.log("<--------------------------------------------------------------------------------------------------->");
 		let test_array = [];
-		console.log(req.body.test_name);
-		db_controller.get_test_by_name(req.body.test_name)
+		db_controller.get_test_by_name(req.params.name)
 			.then(data => {
 				return db_controller.get_all_question_and_answers(data.id);
 			})
 			.then(data => {
 				for (let q_obj in data)
 					test_array.push(new Question_and_Answers(data[q_obj]));
-				res.send(test_array);
+				return db_controller.body_test(test_array);
+				
+			})
+			.then(data => {
+				res.json(data.id);
 			});
     },
 
@@ -37,6 +37,18 @@ let api_controller = {
 		db_controller.get_question(req.body.id)
 			.then(data => {
 				res.send(data);
+			});
+	},
+	get_test_obj: (req , res) => {
+		db_controller.get_body(req.params.id)
+			.then(data => {
+				res.render("takeT" , {
+								        title: 'quizomatic | home',
+								        subtitle: 'the latest in assessment',
+										script: 'testTake',
+										testObj: data.body
+								  	}
+				);
 			});
 	},
 

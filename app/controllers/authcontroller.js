@@ -45,16 +45,3 @@ exports.logout = (req, res) => {
     });
  
 }
-
-
-exports.take_test = (req, res) => {
-    console.log("about to take test");
- 	res.render('takeT', {
-            title: 'take tesr',
-            subtitle: 'take test',
-            script: '',
-            test: ''
-        });
-    console.log("test loaded");
-}
-

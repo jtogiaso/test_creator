@@ -32,10 +32,10 @@ module.exports = function(app) {
 
 
 // Get one test for test taker, should also retrive all the questions and answers
-  app.get("/api/test", api_controller.get_test);
+  app.get("/api/test/:name", api_controller.get_test);
 
   // ===============================================================================
-
+  app.get("/api/take/:id", api_controller.get_test_obj);
 
 // Add a new test
   app.post("/api/test", api_controller.create_test);

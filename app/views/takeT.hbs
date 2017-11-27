@@ -4,8 +4,8 @@
         {{#each testObj }}
         <li>{{question_phrase}}</li>
         {{#each answers}}
-        <input type="radio" id="{{@index}}+{{@../index}}" name="question{{@../index}}" value="answer">
-        <label for="{{@index}}+{{@../index}}">{{phrase}}</label>
+        <input type="radio" id="{{@index}}+{{@../index}}" name="answer{{@../index}}" value="answer">
+        <label for="{{@index}}+{{@../index}}">{{answer}}</label>
         {{/each}} 
         {{/each}}
       </ol>
