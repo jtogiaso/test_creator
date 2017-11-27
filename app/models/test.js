@@ -8,7 +8,13 @@ module.exports = function(sequelize, DataTypes) {
       // len is a validation that checks that our todo is between 1 and 140 characters
       validate: {
         len: [1, 140]
-      }
+      },
+      unique: true
+    },
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   });
     
@@ -23,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         onDelete: "cascade"
       }
     );
+    Test.hasMany(models.Result);
   };
   return Test;
 };

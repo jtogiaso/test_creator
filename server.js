@@ -12,6 +12,7 @@ const bodyParser = require('body-parser')
 const env = require('dotenv').load()
 const exphbs = require('express-handlebars')
 const PORT = process.env.PORT || 8080;
+const path = require("path");
 
 // Requiring our models for syncing
 // =============================================================
@@ -35,30 +36,30 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-//For Handlebars
-// =============================================================
-app.set('views', './app/views')
-app.engine('hbs', exphbs({
-    extname: '.hbs'
-}));
-app.set('view engine', '.hbs');
 
 // Static directory
 // =============================================================
-app.use(express.static("public"));
+app.use(express.static("app/public"));
+
+//For Handlebars
+// =============================================================
+app.engine('.hbs', exphbs({
+    defaultLayout: 'main',
+    layoutsDir: __dirname + '/app/views/layouts',
+    extname: '.hbs'
+}));
+
+app.set('view engine', '.hbs');
+app.set('views', path.join(__dirname, '/app/views'));
 
 // Routes
 // =============================================================
-app.get('/', function(req, res) {
- 
-    res.send('Welcome to Passport with Sequelize');
- 
-});
+
 require("./app/routes/api_routes.js")(app);
-// let authRoute = 
+
 require('./app/routes/auth.js')(app,passport);
 
- //load passport strategies
+ //load passport strategies for User login
 require('./app/config/passport/passport.js')(passport, db.User);
 
 

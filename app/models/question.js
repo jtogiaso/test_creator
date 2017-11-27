@@ -6,6 +6,11 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1, 140]
       }
+    },
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   });
 

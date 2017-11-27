@@ -135,7 +135,7 @@ module.exports = function(passport, user) {
 	        }).then(function(user) {
 	 
 	            if (!user) {
-	 
+	 				console.log('Email does not exist.');
 	                return done(null, false, {
 	                    message: 'Email does not exist'
 	                });
@@ -143,7 +143,7 @@ module.exports = function(passport, user) {
 	            }
 	 
 	            if (!isValidPassword(user.password, password)) {
-	 
+	 				console.log('Incorrect password');
 	                return done(null, false, {
 	                    message: 'Incorrect password.'
 	                });

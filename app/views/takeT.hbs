@@ -1,0 +1,12 @@
+      <h1>hello</h1>
+      <h2>{{testObj.test_name}}</h2>
+      <ol>
+        {{#each testObj }}
+        <li>{{question_phrase}}</li>
+        {{#each answers}}
+        <input type="radio" id="{{@index}}+{{@../index}}" name="question{{@../index}}" value="answer">
+        <label for="{{@index}}+{{@../index}}">{{phrase}}</label>
+        {{/each}} 
+        {{/each}}
+      </ol>
+ 

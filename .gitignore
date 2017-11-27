@@ -1,3 +1,10 @@
 node_modules
 .env
 .DS_Store
+
+# Sass
+.sass-cache/
+*.css.map
+*.scss
+prepros-6.config
+app/public/assets/css/scss/
