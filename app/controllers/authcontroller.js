@@ -23,7 +23,7 @@ exports.dashboard = (req, res) => {
 	        title: 'student dashboard',
 	        subtitle: 'student dashboard',
 	        script: 'testTake',
-			data: ''
+			test: 
 	    });
 	 }
 	 else if (req.user.RoleId === 3){

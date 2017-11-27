@@ -8,8 +8,8 @@ VALUES ('Test Creator' , current_timestamp()  , current_timestamp()),
 INSERT INTO `users` (`firstname` , `lastname` , `email`, `password`, `status`, `createdAt` , `updatedAt` ,`RoleId`)
 VALUES ('kelly' , 'fisher', 'kelly.fisher@gmail.com', '$2a$08$q32de7f2/uVB9XKCemt9DOsxCe4Y0mi0upxK1yB5/tYpKXD.aXjvG' , 'active' , current_timestamp()  , current_timestamp() , 1),
                 ('frank' , 'till', 'frank.till@gmail.com', '$2a$08$XFhYgmln.C4TzTPrngYeaOiqm.wx6Grm4AUpSO/lTgPESmp3oXx5e' , 'active' , current_timestamp()  , current_timestamp() , 1),
-        ('preston' , 'james', 'preston.james@gmail.com', '$2a$08$u447MblnB79HFdsv1cK1NeXai/aNQoTKq8GZlQT1z/kX7LAuJ.kAG' , 'active' , current_timestamp()  , current_timestamp() , 2),
-        ('shane' , 'tommen', 'shane.tommen@gmail.com', '$2a$08$nOmpbqkYuzaiWSrNGnZYS.CIyaQSjHrnAjv6szxI3JpXI85aGoyJO' , 'active' , current_timestamp()  , current_timestamp() , 3);
+        ('preston' , 'james', 'preston.james@gmail.com', '$2a$08$q32de7f2/uVB9XKCemt9DOsxCe4Y0mi0upxK1yB5/tYpKXD.aXjvG' , 'active' , current_timestamp()  , current_timestamp() , 2),
+        ('shane' , 'tommen', 'shane.tommen@gmail.com', '$2a$08$XFhYgmln.C4TzTPrngYeaOiqm.wx6Grm4AUpSO/lTgPESmp3oXx5e' , 'active' , current_timestamp()  , current_timestamp() , 3);
         
 INSERT INTO `tests` (`test_name`,`createdAt`,`updatedAt` , `UserId`)
 VALUES ('Chemistry 101 First Quarter Test' ,current_timestamp() , current_timestamp() , 2),
