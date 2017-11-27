@@ -23,7 +23,7 @@ exports.dashboard = (req, res) => {
 	        title: 'student dashboard',
 	        subtitle: 'student dashboard',
 	        script: 'testTake',
-			test: 
+			test: '' 
 	    });
 	 }
 	 else if (req.user.RoleId === 3){
@@ -46,63 +46,14 @@ exports.logout = (req, res) => {
 }
 
 
-var testObj = {
-        test_name: "whatever",
-        1: {
-            question_phrase: "question1",
-            answers: {
-                1: {phrase: "answer1"},
-                2: {phrase: "answer2"},
-                3: {phrase: "answer3"},
-                4: {phrase: "answer4"}
-            }
-        },
-        2: {
-            question_phrase: "question2",
-            answers: {
-                1: {phrase: "answer1"},
-                2: {phrase: "answer2"},
-                3: {phrase: "answer3"},
-                4: {phrase: "answer4"}
-            }
-        },
-        3: {
-            question_phrase: "question3",
-            answers: {
-                1: {phrase: "answer1"},
-                2: {phrase: "answer2"},
-                3: {phrase: "answer3"},
-                4: {phrase: "answer4"}
-            }
-        },
-        4: {
-            question_phrase: "question4",
-            answers: {
-                1: {phrase: "answer1"},
-                2: {phrase: "answer2"},
-                3: {phrase: "answer3"},
-                4: {phrase: "answer4"}
-            }
-        },
-        5: {
-            question_phrase: "question5",
-            answers: {
-                1: {phrase: "answer1"},
-                2: {phrase: "answer2"},
-                3: {phrase: "answer3"},
-                4: {phrase: "answer4"}
-            }
-        }
-    };
-
-    var test = {
-        testObj: testObj
-    };
-
-
 exports.take_test = (req, res) => {
  
- 	res.render("takeT", req.body.test);
+ 	res.render("takeT", {
+            title: 'Test taker',
+            subtitle: 'Test ',
+            script: 'testTake',
+            test: req.body.test
+        });
  
 }
 

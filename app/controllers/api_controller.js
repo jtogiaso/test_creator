@@ -3,20 +3,136 @@ let db_controller = require("./db_controller.js");
 let api_controller = {
 	get_test: (req, res) => {
 
-		console.log("someone has called this api");
-		db_controller.get_test(req.body.id)
+		let test_array = [];
+		let question_id_array_query = [];
+
+
+		db_controller.get_test_by_name(req.body.test_name)
 			.then(data => {
-				// let testObj = {};
-				// testObj.test_name = req.body.test_name;
-				// scope.get_all_question(data.id)
-				// 	.then(data => {
-				// 		for (let i = 0; i < ){
-				// 			testObj[i].question_phrase = data[i].question_phrase;
-				// 		}
-				// 	});
-				res.send(data);
+				return db_controller.get_all_question(data.id);
+			})
+			.then(data => {
+				for (let i in data){
+					let question_object = {};
+					let question_object.question_phrase = data[i].dataValues.question_phrase;
+					let question_object.test_id = data[i].dataValues.TestId;
+					let question_object.question_id = data[i].dataValues.id
+
+					
+					console.log("<--------------------------------------------------------->");
+					console.log(data[i].dataValues);
+					console.log("<--------------------------------------------------------->");
+				}
+				res.json(data);
 			});
-	},
+		//Retrieve test_id
+		//Search for all questions tied to test_id
+		//Create array with all question_id's
+		//Search for all answers tied to the multi-query of question_ids
+		//Construct Test Array of Question Objects
+			// let testArray = []
+			// Construct each question object
+			
+			// [
+
+			// 	{	
+			// 		Question_phrase: 'aksjfkjb?',
+			// 		Answers: [
+			// 			{
+			// 				answer_phrase: 'w',
+			// 				answer_id: 4
+			// 			},
+			// 			{
+			// 				answer_phrase: 'd',
+			// 				answer_id: 3
+			// 			},
+			// 			{
+			// 				answer_phrase: 'c',
+			// 				answer_id: 2
+			// 			},
+			// 			{
+			// 				answer_phrase: 'b',
+			// 				answer_id: 1
+			// 			}
+			// 		],
+			// 		Question_Id: 1,
+			// 		Test_Id: 2
+			// 	},
+			// 	{	
+			// 		Question_phrase: 'aksjfkjb?',
+			// 		Answers: [
+			// 			{
+			// 				answer_phrase: 'w',
+			// 				answer_id: 4
+			// 			},
+			// 			{
+			// 				answer_phrase: 'd',
+			// 				answer_id: 3
+			// 			},
+			// 			{
+			// 				answer_phrase: 'c',
+			// 				answer_id: 2
+			// 			},
+			// 			{
+			// 				answer_phrase: 'b',
+			// 				answer_id: 1
+			// 			}
+			// 		],
+			// 		Question_Id: 1,
+			// 		Test_Id: 2
+			// 	}{	
+			// 		Question_phrase: 'aksjfkjb?',
+			// 		Answers: [
+			// 			{
+			// 				answer_phrase: 'w',
+			// 				answer_id: 4
+			// 			},
+			// 			{
+			// 				answer_phrase: 'd',
+			// 				answer_id: 3
+			// 			},
+			// 			{
+			// 				answer_phrase: 'c',
+			// 				answer_id: 2
+			// 			},
+			// 			{
+			// 				answer_phrase: 'b',
+			// 				answer_id: 1
+			// 			}
+			// 		],
+			// 		Question_Id: 1,
+			// 		Test_Id: 2
+			// 	}
+			
+			
+			// ]
+			
+
+
+        // var test = {};
+        // var testObj = {};
+        // db_controller.get_test(1)
+        //     .then(data1 => {
+        //         let scope2 = this;
+        //         console.log(data1);
+        //         testObj.test_name = data1.test_name;
+        //         db_controller.get_all_question(data1.id)
+        //             .then(data2 => {
+        //                 for(var i = 0; i < data2.length; i++) {
+        //                     testObj[i].question_phrase = data2[i].question_phrase;
+        //                     db_controller.get_all_answer(data2[i].id)
+        //                     .then(data3 => {
+        //                         for(var j = 0; j < data3.length; j++) {
+        //                             testObj[i].answers[j].phrase = data[j].answer_phrase;
+        //                             testObj[i].answers[j].answer_id = data[j].id;
+        //                         }
+        //                     });
+        //                 };
+        //             });
+        //         test.testObj = testObj;
+        //         res.send(test);
+        //     });
+    },
 
 	get_question: (req, res) => {
 		db_controller.get_question(req.body.id)

@@ -10,6 +10,14 @@ module.exports = {
 		})
 	},
 
+	get_test_by_name: (testName) => {
+		return models.Test.findOne({
+			where: {
+				test_name: testName
+			}
+		})
+	},
+
 	get_all_test: (userId) => {
 		return models.Test.findAll({
 			where: {
