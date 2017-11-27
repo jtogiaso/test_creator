@@ -2,6 +2,8 @@ let db_controller = require("./db_controller.js");
 
 let api_controller = {
 	get_test: (req, res) => {
+
+		console.log("someone has called this api");
 		db_controller.get_test(req.body.id)
 			.then(data => {
 				// let testObj = {};

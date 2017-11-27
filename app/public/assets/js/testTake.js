@@ -9,6 +9,8 @@
 var currentTest;
 var currentUser;
 
+alert('oaisfhosihgfd');
+
 // getUser
 // =============================================================
 var getUser = function() {
@@ -29,20 +31,23 @@ var getTest = function(neededTest) {
 		type: 'GET',
 		url: "/api/test",
 		data: {
-			test_name: $("#testGet-input").val().trim()
+			test_name: neededTest
 		}
 	};
 
-	$.ajax(parameters)
-		.done(function (data) {
-			console.log("Test " + parameters.data.test_name + " has been loaded.");
-			console.log(data);
-		})
-		.catch(function (err) {
-			console.log("Error: ");
-			console.log(err);
-		});	
+	return $.ajax(parameters);
+		// .done(function (data) {
+		// 	console.log("Test " + parameters.data.test_name + " has been loaded.");
+		// 	console.log(data);
+		// })
+		// .catch(function (err) {
+		// 	console.log("Error: ");
+		// 	console.log(err);
+		// });	
 };
+
+// Get and display results
+// // =============================================================
 
 
 
@@ -54,8 +59,25 @@ $('#testGet-btn').click(function (event) {
 	console.log("Get test button was clicked.");
 	$("#testDisplay").attr("aria-hidden", false);
 	currentTest = $("#testGet-input").val().trim();
-	getTest(currentTest);
+	getTest(currentTest)
+		.then(data => {
+			let parameters = {
+				type: 'GET',
+				url: "/testTaker",
+				data: {
+					test: data
+				}
+			};
 
+			$.ajax(parameters);
+		});
+
+});
+
+$('#submitTest-btn').click(function (event) {
+	event.preventDefault();
+	console.log("Submit button was clicked.");
+	$("#resultsDisplay").attr("aria-hidden", false);
 });
 
 

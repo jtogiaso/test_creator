@@ -55,15 +55,6 @@ app.set('views', path.join(__dirname, '/app/views'));
 // Routes
 // =============================================================
 
-// app.get('/', function(req, res) {
-//      //res.sendFile(path.join(__dirname + '/app/public/index.html'));
-//     res.render('index', {
-//         title: 'quizomatic | home',
-//         subtitle: 'the latest in assessment',
-// 		script: 'index'
-//     });
-// });
-
 require("./app/routes/api_routes.js")(app);
 
 require('./app/routes/auth.js')(app,passport);
