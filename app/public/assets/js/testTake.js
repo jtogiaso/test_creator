@@ -33,7 +33,6 @@ var getTest = function(student_test_query) {
 
 	$.ajax(parameters)
 	.done( data => {
-		console.log("This should be the id of the new test: " + data)
 		let test_url = window.location.href.split('/');
 		let new_href = test_url[0] + "//" + test_url[2] + "/api/take/" + data;
 		 window.location.replace(new_href);
@@ -61,6 +60,20 @@ $('#submitTest-btn').click(function (event) {
 	event.preventDefault();
 	console.log("Submit button was clicked.");
 	$("#resultsDisplay").attr("aria-hidden", false);
+});
+
+$("#lob").on("click", function(event) {
+	let parameters = {
+		type: 'GET',
+		url: "/logout"
+	};
+	console.log("Yup I was clicked");
+	$.ajax(parameters)
+	.done( data => {
+		let test_url = window.location.href.split('/');
+		let new_href = test_url[0] + "//" + test_url[2] ;
+		window.location.replace(new_href);
+	});
 });
 
 
