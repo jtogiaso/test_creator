@@ -148,7 +148,7 @@ let api_controller = {
 			total_questions++;
 		};
 
-		return (100 * (total_correct / total_questions)).toFixed(2);
+		return parseFloat((100 * (total_correct / total_questions)).toFixed(2));
 
 	},
 

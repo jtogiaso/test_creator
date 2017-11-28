@@ -58,7 +58,7 @@ module.exports = function(app) {
   app.put("/api/answer", api_controller.update_answer);
 
 //Update a result
-  app.put("/api/answer", api_controller.update_result);
+  app.put("/api/resut", api_controller.update_result);
 
 // ===============================================================================
 
