@@ -41,6 +41,21 @@ $("[value='Sign Up']").on("click", function(event) {
 	setUser("#signup-email");
 });
 
+$("#lob").on("click", function(event) {
+	let parameters = {
+		type: 'GET',
+		url: "/logout"
+	};
+	console.log("Yup I was clicked");
+	$.ajax(parameters)
+	.done( data => {
+		let test_url = window.location.href.split('/');
+		let new_href = test_url[0] + "//" + test_url[2] ;
+		window.location.replace(new_href);
+	});
+});
+
+
 // Document Ready
 // =============================================================
 
