@@ -16,7 +16,7 @@ let basename      = path.basename(__filename);
 //   }
 // };
 
-if(process.env.JAWS_DB) {
+if(process.env.JAWSDB_URL) {
   var sequelize = new Sequelize(process.env.JAWSDB_URL);
 }
 // else if (config.use_env_variable) {
