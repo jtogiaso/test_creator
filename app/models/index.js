@@ -16,7 +16,10 @@ for (let key in config){
   }
 };
 
-if (config.use_env_variable) {
+if(process.env.JAWS_DB) {
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+}
+else if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } 
 else {
