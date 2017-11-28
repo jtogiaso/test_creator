@@ -8,3 +8,12 @@ node_modules
 *.scss
 prepros-6.config
 app/public/assets/css/scss/
+
+# Working html
+main.html
+index.html
+dashboard-s.html
+dashboard-t.html
+takeT.html
+
+
