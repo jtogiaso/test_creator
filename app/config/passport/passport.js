@@ -49,6 +49,15 @@ module.exports = function(passport, user) {
 			        email: email
 			    }
 			}).then(function(user) {
+
+				console.log(req.body);
+				var role_id;
+				if (req.body.teacher === "on"){
+					role_id = 1;
+				}
+				else{
+					role_id = 2;
+				}
 			 
 			    if (user)
 			 
@@ -73,7 +82,9 @@ module.exports = function(passport, user) {
 			 
 			                firstname: req.body.firstname,
 			 
-			                lastname: req.body.lastname
+			                lastname: req.body.lastname,
+
+			                RoleId: role_id
 			 
 			            };
 			 

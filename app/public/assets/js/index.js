@@ -46,7 +46,6 @@ $("#lob").on("click", function(event) {
 		type: 'GET',
 		url: "/logout"
 	};
-	console.log("Yup I was clicked");
 	$.ajax(parameters)
 	.done( data => {
 		let test_url = window.location.href.split('/');
