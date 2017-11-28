@@ -11,7 +11,7 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const env = require('dotenv').load()
 const exphbs = require('express-handlebars')
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3300;
 const path = require("path");
 
 // Requiring our models for syncing
